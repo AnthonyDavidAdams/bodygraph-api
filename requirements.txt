@@ -1,0 +1,14 @@
+# service
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.6
+# astronomy
+pyswisseph>=2.10.3.2
+# time zones and places
+tzdata>=2025.1
+timezonefinder>=6.5
+geonamescache>=2.0
+# rendering
+fonttools>=4.50
+uharfbuzz>=0.39
+cairosvg>=2.7

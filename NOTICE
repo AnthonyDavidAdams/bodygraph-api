@@ -1,0 +1,21 @@
+Bodygraph API
+Licensed under the GNU Affero General Public License, version 3 or later.
+
+This service links the Swiss Ephemeris (Astrodienst AG), which is offered
+under the AGPL or a paid Professional License. See ephe/LICENSE-swisseph.txt.
+The files in ephe/*.se1 are Swiss Ephemeris data files from
+https://github.com/aloistr/swisseph.
+
+Fonts: Barlow and Barlow Semi Condensed by Jeremy Tribby, SIL Open Font
+License 1.1. See bodygraph/fonts/OFL-barlow.txt. Text in rendered charts is
+converted to outlines.
+
+Lookup tables in bodygraph/tables.json were assembled and cross-checked from
+these MIT-licensed projects:
+  pyhd                        https://github.com/ppo/pyhd
+  SharpAstrology.HumanDesign  https://github.com/CReizner/SharpAstrology.HumanDesign
+  natalengine                 https://github.com/Unforced-Dev/natalengine
+  hdkit                       https://github.com/jdempcy/hdkit
+
+Place data: GeoNames (CC BY 4.0) through the geonamescache package.
+Reference chart activations used in tests were published by Jovian Archive.

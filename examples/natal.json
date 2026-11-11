@@ -1,0 +1,1028 @@
+{
+ "schema_version": "1.0",
+ "birth": {
+  "utc": "1961-08-05T05:24:00Z",
+  "julian_day_tt": 2437516.72539157
+ },
+ "design": {
+  "utc": "1961-05-05T07:08:53Z",
+  "julian_day_tt": 2437424.79823126,
+  "days_before_birth": 91.92716,
+  "solar_arc_degrees": 88.000000001
+ },
+ "type": "Projector",
+ "strategy": "Wait for the invitation",
+ "authority": "Emotional (Solar Plexus)",
+ "authority_key": "emotional",
+ "signature": "Success",
+ "not_self_theme": "Bitterness",
+ "definition": "Single Definition",
+ "definition_groups": [
+  [
+   "solar_plexus",
+   "root"
+  ]
+ ],
+ "profile": {
+  "notation": "6/2",
+  "name": "Role Model / Hermit",
+  "valid": true
+ },
+ "incarnation_cross": {
+  "name": "Left Angle Cross of Refinement",
+  "variant": 1,
+  "angle": "Left Angle",
+  "gates": {
+   "personality_sun": 33,
+   "personality_earth": 19,
+   "design_sun": 2,
+   "design_earth": 1
+  },
+  "notation": "33/19 | 2/1",
+  "quarter": {
+   "name": "Quarter of Civilization",
+   "theme": "Form"
+  },
+  "table_gates_match": true
+ },
+ "centers": {
+  "head": {
+   "name": "Head",
+   "state": "undefined",
+   "defined": false,
+   "kind": "pressure",
+   "definition_group": null,
+   "active_gates": [
+    61
+   ],
+   "channels": []
+  },
+  "ajna": {
+   "name": "Ajna",
+   "state": "undefined",
+   "defined": false,
+   "kind": "awareness",
+   "definition_group": null,
+   "active_gates": [
+    4,
+    47
+   ],
+   "channels": []
+  },
+  "throat": {
+   "name": "Throat",
+   "state": "undefined",
+   "defined": false,
+   "kind": "manifestation",
+   "definition_group": null,
+   "active_gates": [
+    20,
+    31,
+    33,
+    56
+   ],
+   "channels": []
+  },
+  "g": {
+   "name": "G",
+   "state": "undefined",
+   "defined": false,
+   "kind": "identity",
+   "definition_group": null,
+   "active_gates": [
+    1,
+    2,
+    15
+   ],
+   "channels": []
+  },
+  "heart": {
+   "name": "Heart",
+   "state": "undefined",
+   "defined": false,
+   "kind": "motor",
+   "definition_group": null,
+   "active_gates": [
+    21,
+    40
+   ],
+   "channels": []
+  },
+  "spleen": {
+   "name": "Spleen",
+   "state": "undefined",
+   "defined": false,
+   "kind": "awareness",
+   "definition_group": null,
+   "active_gates": [
+    44
+   ],
+   "channels": []
+  },
+  "solar_plexus": {
+   "name": "Solar Plexus",
+   "state": "defined",
+   "defined": true,
+   "kind": "motor and awareness",
+   "definition_group": 1,
+   "active_gates": [
+    30,
+    55
+   ],
+   "channels": [
+    "30-41"
+   ]
+  },
+  "sacral": {
+   "name": "Sacral",
+   "state": "undefined",
+   "defined": false,
+   "kind": "motor",
+   "definition_group": null,
+   "active_gates": [
+    29,
+    59
+   ],
+   "channels": []
+  },
+  "root": {
+   "name": "Root",
+   "state": "defined",
+   "defined": true,
+   "kind": "motor and pressure",
+   "definition_group": 1,
+   "active_gates": [
+    19,
+    38,
+    41,
+    60
+   ],
+   "channels": [
+    "30-41"
+   ]
+  }
+ },
+ "defined_centers": [
+  "solar_plexus",
+  "root"
+ ],
+ "undefined_centers": [
+  "head",
+  "ajna",
+  "throat",
+  "g",
+  "heart",
+  "spleen",
+  "sacral"
+ ],
+ "open_centers": [],
+ "channels": [
+  {
+   "id": "30-41",
+   "gates": [
+    30,
+    41
+   ],
+   "name": "Recognition",
+   "centers": [
+    "solar_plexus",
+    "root"
+   ],
+   "circuit": "Sensing",
+   "circuit_group": "Collective",
+   "channel_type": "projected",
+   "gate_sides": {
+    "30": "personality",
+    "41": "design"
+   },
+   "activation": "mixed"
+  }
+ ],
+ "gates": {
+  "1": {
+   "gate": 1,
+   "name": "The Creative",
+   "center": "g",
+   "activation": "design",
+   "personality": [],
+   "design": [
+    "earth"
+   ],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    8
+   ]
+  },
+  "2": {
+   "gate": 2,
+   "name": "The Receptive",
+   "center": "g",
+   "activation": "design",
+   "personality": [],
+   "design": [
+    "sun",
+    "mercury"
+   ],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    14
+   ]
+  },
+  "4": {
+   "gate": 4,
+   "name": "Formulization",
+   "center": "ajna",
+   "activation": "design",
+   "personality": [],
+   "design": [
+    "uranus"
+   ],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    63
+   ]
+  },
+  "15": {
+   "gate": 15,
+   "name": "Extremes",
+   "center": "g",
+   "activation": "personality",
+   "personality": [
+    "venus"
+   ],
+   "design": [],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    5
+   ]
+  },
+  "19": {
+   "gate": 19,
+   "name": "Wanting",
+   "center": "root",
+   "activation": "personality",
+   "personality": [
+    "earth"
+   ],
+   "design": [],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    49
+   ]
+  },
+  "20": {
+   "gate": 20,
+   "name": "The Now",
+   "center": "throat",
+   "activation": "personality",
+   "personality": [
+    "moon"
+   ],
+   "design": [],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    10,
+    34,
+    57
+   ]
+  },
+  "21": {
+   "gate": 21,
+   "name": "The Hunter",
+   "center": "heart",
+   "activation": "design",
+   "personality": [],
+   "design": [
+    "venus"
+   ],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    45
+   ]
+  },
+  "29": {
+   "gate": 29,
+   "name": "Perseverance",
+   "center": "sacral",
+   "activation": "personality",
+   "personality": [
+    "north_node",
+    "uranus"
+   ],
+   "design": [],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    46
+   ]
+  },
+  "30": {
+   "gate": 30,
+   "name": "Recognition of Feelings",
+   "center": "solar_plexus",
+   "activation": "personality",
+   "personality": [
+    "south_node"
+   ],
+   "design": [],
+   "in_channel": true,
+   "hanging": false,
+   "harmonic_gates": [
+    41
+   ]
+  },
+  "31": {
+   "gate": 31,
+   "name": "Leading",
+   "center": "throat",
+   "activation": "personality",
+   "personality": [
+    "mercury"
+   ],
+   "design": [],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    7
+   ]
+  },
+  "33": {
+   "gate": 33,
+   "name": "Privacy",
+   "center": "throat",
+   "activation": "personality",
+   "personality": [
+    "sun"
+   ],
+   "design": [],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    13
+   ]
+  },
+  "38": {
+   "gate": 38,
+   "name": "The Fighter",
+   "center": "root",
+   "activation": "design",
+   "personality": [],
+   "design": [
+    "moon"
+   ],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    28
+   ]
+  },
+  "40": {
+   "gate": 40,
+   "name": "Aloneness",
+   "center": "heart",
+   "activation": "personality",
+   "personality": [
+    "pluto"
+   ],
+   "design": [],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    37
+   ]
+  },
+  "41": {
+   "gate": 41,
+   "name": "Contraction",
+   "center": "root",
+   "activation": "design",
+   "personality": [],
+   "design": [
+    "jupiter"
+   ],
+   "in_channel": true,
+   "hanging": false,
+   "harmonic_gates": [
+    30
+   ]
+  },
+  "44": {
+   "gate": 44,
+   "name": "Coming to Meet",
+   "center": "spleen",
+   "activation": "both",
+   "personality": [
+    "neptune"
+   ],
+   "design": [
+    "neptune"
+   ],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    26
+   ]
+  },
+  "47": {
+   "gate": 47,
+   "name": "Realization",
+   "center": "ajna",
+   "activation": "personality",
+   "personality": [
+    "mars"
+   ],
+   "design": [],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    64
+   ]
+  },
+  "55": {
+   "gate": 55,
+   "name": "Spirit",
+   "center": "solar_plexus",
+   "activation": "design",
+   "personality": [],
+   "design": [
+    "south_node"
+   ],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    39
+   ]
+  },
+  "56": {
+   "gate": 56,
+   "name": "Stimulation",
+   "center": "throat",
+   "activation": "design",
+   "personality": [],
+   "design": [
+    "mars"
+   ],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    11
+   ]
+  },
+  "59": {
+   "gate": 59,
+   "name": "Sexuality",
+   "center": "sacral",
+   "activation": "design",
+   "personality": [],
+   "design": [
+    "north_node",
+    "pluto"
+   ],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    6
+   ]
+  },
+  "60": {
+   "gate": 60,
+   "name": "Limitation",
+   "center": "root",
+   "activation": "both",
+   "personality": [
+    "jupiter"
+   ],
+   "design": [
+    "saturn"
+   ],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    3
+   ]
+  },
+  "61": {
+   "gate": 61,
+   "name": "Mystery",
+   "center": "head",
+   "activation": "personality",
+   "personality": [
+    "saturn"
+   ],
+   "design": [],
+   "in_channel": false,
+   "hanging": true,
+   "harmonic_gates": [
+    24
+   ]
+  }
+ },
+ "circuits": {
+  "Sensing": 1
+ },
+ "variables": {
+  "determination": {
+   "source": "design sun",
+   "color": 3,
+   "tone": 2,
+   "base": 5,
+   "orientation": "left",
+   "name": "Thirst",
+   "mode": "Hot"
+  },
+  "environment": {
+   "source": "design north node",
+   "color": 3,
+   "tone": 3,
+   "base": 3,
+   "orientation": "left",
+   "name": "Kitchens",
+   "mode": "Wet"
+  },
+  "perspective": {
+   "source": "personality north node",
+   "color": 6,
+   "tone": 6,
+   "base": 4,
+   "orientation": "right",
+   "name": "Personal",
+   "mode": "Peripheral"
+  },
+  "motivation": {
+   "source": "personality sun",
+   "color": 2,
+   "tone": 4,
+   "base": 1,
+   "orientation": "right",
+   "name": "Hope",
+   "mode": "Receptive"
+  },
+  "cognition": "Taste",
+  "notation": "PRR DLL"
+ },
+ "activations": {
+  "personality": {
+   "sun": {
+    "body": "sun",
+    "gate": 33,
+    "line": 6,
+    "color": 2,
+    "tone": 4,
+    "base": 1,
+    "gate_line": "33.6",
+    "longitude": 132.5479239,
+    "zodiac": "12\u00b032'53\" Leo",
+    "speed_deg_per_day": 0.9579335,
+    "retrograde": false,
+    "line_progress": 0.2511,
+    "minutes_since_line_began": 353.9,
+    "minutes_until_line_ends": 1055.4,
+    "fixation": "exalted"
+   },
+   "earth": {
+    "body": "earth",
+    "gate": 19,
+    "line": 6,
+    "color": 2,
+    "tone": 4,
+    "base": 1,
+    "gate_line": "19.6",
+    "longitude": 312.5479239,
+    "zodiac": "12\u00b032'53\" Aquarius",
+    "speed_deg_per_day": 0.9579335,
+    "retrograde": false,
+    "line_progress": 0.2511,
+    "minutes_since_line_began": 353.9,
+    "minutes_until_line_ends": 1055.4,
+    "fixation": null
+   },
+   "north_node": {
+    "body": "north_node",
+    "gate": 29,
+    "line": 3,
+    "color": 6,
+    "tone": 6,
+    "base": 4,
+    "gate_line": "29.3",
+    "longitude": 147.3050181,
+    "zodiac": "27\u00b018'18\" Leo",
+    "speed_deg_per_day": -0.0196996,
+    "retrograde": true,
+    "line_progress": 0.008,
+    "minutes_since_line_began": 546.9,
+    "minutes_until_line_ends": 67982.4,
+    "fixation": null
+   },
+   "south_node": {
+    "body": "south_node",
+    "gate": 30,
+    "line": 3,
+    "color": 6,
+    "tone": 6,
+    "base": 4,
+    "gate_line": "30.3",
+    "longitude": 327.3050181,
+    "zodiac": "27\u00b018'18\" Aquarius",
+    "speed_deg_per_day": -0.0196996,
+    "retrograde": true,
+    "line_progress": 0.008,
+    "minutes_since_line_began": 546.9,
+    "minutes_until_line_ends": 67982.4,
+    "fixation": "detriment"
+   },
+   "moon": {
+    "body": "moon",
+    "gate": 20,
+    "line": 4,
+    "color": 3,
+    "tone": 5,
+    "base": 1,
+    "gate_line": "20.4",
+    "longitude": 63.3574372,
+    "zodiac": "3\u00b021'27\" Gemini",
+    "speed_deg_per_day": 12.6801951,
+    "retrograde": false,
+    "line_progress": 0.4479,
+    "minutes_since_line_began": 47.7,
+    "minutes_until_line_ends": 58.8,
+    "fixation": null
+   },
+   "mercury": {
+    "body": "mercury",
+    "gate": 31,
+    "line": 1,
+    "color": 3,
+    "tone": 1,
+    "base": 4,
+    "gate_line": "31.1",
+    "longitude": 122.3316109,
+    "zodiac": "2\u00b019'54\" Leo",
+    "speed_deg_per_day": 2.0047288,
+    "retrograde": false,
+    "line_progress": 0.3537,
+    "minutes_since_line_began": 238.2,
+    "minutes_until_line_ends": 435.2,
+    "fixation": null
+   },
+   "venus": {
+    "body": "venus",
+    "gate": 15,
+    "line": 4,
+    "color": 5,
+    "tone": 4,
+    "base": 5,
+    "gate_line": "15.4",
+    "longitude": 91.7893609,
+    "zodiac": "1\u00b047'22\" Cancer",
+    "speed_deg_per_day": 1.1339284,
+    "retrograde": false,
+    "line_progress": 0.7753,
+    "minutes_since_line_began": 923.1,
+    "minutes_until_line_ends": 267.5,
+    "fixation": null
+   },
+   "mars": {
+    "body": "mars",
+    "gate": 47,
+    "line": 6,
+    "color": 6,
+    "tone": 5,
+    "base": 1,
+    "gate_line": "47.6",
+    "longitude": 172.5766034,
+    "zodiac": "22\u00b034'36\" Virgo",
+    "speed_deg_per_day": 0.6234531,
+    "retrograde": false,
+    "line_progress": 0.9484,
+    "minutes_since_line_began": 2053.6,
+    "minutes_until_line_ends": 111.8,
+    "fixation": null
+   },
+   "jupiter": {
+    "body": "jupiter",
+    "gate": 60,
+    "line": 5,
+    "color": 5,
+    "tone": 5,
+    "base": 1,
+    "gate_line": "60.5",
+    "longitude": 300.8586276,
+    "zodiac": "0\u00b051'31\" Aquarius",
+    "speed_deg_per_day": -0.1243673,
+    "retrograde": true,
+    "line_progress": 0.2175,
+    "minutes_since_line_began": 2360.6,
+    "minutes_until_line_ends": 8494.4,
+    "fixation": "detriment"
+   },
+   "saturn": {
+    "body": "saturn",
+    "gate": 61,
+    "line": 5,
+    "color": 6,
+    "tone": 2,
+    "base": 5,
+    "gate_line": "61.5",
+    "longitude": 295.3307492,
+    "zodiac": "25\u00b019'51\" Capricorn",
+    "speed_deg_per_day": -0.0687929,
+    "retrograde": true,
+    "line_progress": 0.1139,
+    "minutes_since_line_began": 2234.5,
+    "minutes_until_line_ends": 17389.6,
+    "fixation": "exalted"
+   },
+   "uranus": {
+    "body": "uranus",
+    "gate": 29,
+    "line": 1,
+    "color": 5,
+    "tone": 6,
+    "base": 4,
+    "gate_line": "29.1",
+    "longitude": 145.2708344,
+    "zodiac": "25\u00b016'15\" Leo",
+    "speed_deg_per_day": 0.0612542,
+    "retrograde": false,
+    "line_progress": 0.8222,
+    "minutes_since_line_began": 18121.2,
+    "minutes_until_line_ends": 3918.1,
+    "fixation": null
+   },
+   "neptune": {
+    "body": "neptune",
+    "gate": 44,
+    "line": 2,
+    "color": 1,
+    "tone": 2,
+    "base": 4,
+    "gate_line": "44.2",
+    "longitude": 218.6059504,
+    "zodiac": "8\u00b036'21\" Scorpio",
+    "speed_deg_per_day": 0.0082846,
+    "retrograde": false,
+    "line_progress": 0.0463,
+    "minutes_since_line_began": 7552.4,
+    "minutes_until_line_ends": 155400.3,
+    "fixation": null
+   },
+   "pluto": {
+    "body": "pluto",
+    "gate": 40,
+    "line": 2,
+    "color": 2,
+    "tone": 6,
+    "base": 1,
+    "gate_line": "40.2",
+    "longitude": 156.977759,
+    "zodiac": "6\u00b058'40\" Virgo",
+    "speed_deg_per_day": 0.0317013,
+    "retrograde": false,
+    "line_progress": 0.3096,
+    "minutes_since_line_began": 13184.7,
+    "minutes_until_line_ends": 29400.3,
+    "fixation": null
+   }
+  },
+  "design": {
+   "sun": {
+    "body": "sun",
+    "gate": 2,
+    "line": 2,
+    "color": 3,
+    "tone": 2,
+    "base": 5,
+    "gate_line": "2.2",
+    "longitude": 44.5479239,
+    "zodiac": "14\u00b032'53\" Taurus",
+    "speed_deg_per_day": 0.9682993,
+    "retrograde": false,
+    "line_progress": 0.3845,
+    "minutes_since_line_began": 536.0,
+    "minutes_until_line_ends": 858.2,
+    "fixation": null
+   },
+   "earth": {
+    "body": "earth",
+    "gate": 1,
+    "line": 2,
+    "color": 3,
+    "tone": 2,
+    "base": 5,
+    "gate_line": "1.2",
+    "longitude": 224.5479239,
+    "zodiac": "14\u00b032'53\" Scorpio",
+    "speed_deg_per_day": 0.9682993,
+    "retrograde": false,
+    "line_progress": 0.3845,
+    "minutes_since_line_began": 536.0,
+    "minutes_until_line_ends": 858.2,
+    "fixation": null
+   },
+   "north_node": {
+    "body": "north_node",
+    "gate": 59,
+    "line": 4,
+    "color": 3,
+    "tone": 3,
+    "base": 3,
+    "gate_line": "59.4",
+    "longitude": 153.3162826,
+    "zodiac": "3\u00b018'59\" Virgo",
+    "speed_deg_per_day": -0.0751346,
+    "retrograde": true,
+    "line_progress": 0.596,
+    "minutes_since_line_began": 10708.2,
+    "minutes_until_line_ends": 7259.6,
+    "fixation": null
+   },
+   "south_node": {
+    "body": "south_node",
+    "gate": 55,
+    "line": 4,
+    "color": 3,
+    "tone": 3,
+    "base": 3,
+    "gate_line": "55.4",
+    "longitude": 333.3162826,
+    "zodiac": "3\u00b018'59\" Pisces",
+    "speed_deg_per_day": -0.0751346,
+    "retrograde": true,
+    "line_progress": 0.596,
+    "minutes_since_line_began": 10708.2,
+    "minutes_until_line_ends": 7259.6,
+    "fixation": null
+   },
+   "moon": {
+    "body": "moon",
+    "gate": 38,
+    "line": 5,
+    "color": 1,
+    "tone": 2,
+    "base": 4,
+    "gate_line": "38.5",
+    "longitude": 283.2939476,
+    "zodiac": "13\u00b017'38\" Capricorn",
+    "speed_deg_per_day": 14.1982794,
+    "retrograde": false,
+    "line_progress": 0.0469,
+    "minutes_since_line_began": 4.5,
+    "minutes_until_line_ends": 90.6,
+    "fixation": null
+   },
+   "mercury": {
+    "body": "mercury",
+    "gate": 2,
+    "line": 6,
+    "color": 4,
+    "tone": 5,
+    "base": 2,
+    "gate_line": "2.6",
+    "longitude": 48.5172538,
+    "zodiac": "18\u00b031'02\" Taurus",
+    "speed_deg_per_day": 2.1635361,
+    "retrograde": false,
+    "line_progress": 0.6184,
+    "minutes_since_line_began": 385.9,
+    "minutes_until_line_ends": 238.1,
+    "fixation": "exalted"
+   },
+   "venus": {
+    "body": "venus",
+    "gate": 21,
+    "line": 4,
+    "color": 4,
+    "tone": 6,
+    "base": 3,
+    "gate_line": "21.4",
+    "longitude": 12.9267467,
+    "zodiac": "12\u00b055'36\" Aries",
+    "speed_deg_per_day": 0.1199485,
+    "retrograde": false,
+    "line_progress": 0.6552,
+    "minutes_since_line_began": 7374.1,
+    "minutes_until_line_ends": 3880.7,
+    "fixation": null
+   },
+   "mars": {
+    "body": "mars",
+    "gate": 56,
+    "line": 4,
+    "color": 3,
+    "tone": 5,
+    "base": 2,
+    "gate_line": "56.4",
+    "longitude": 119.6125104,
+    "zodiac": "29\u00b036'45\" Cancer",
+    "speed_deg_per_day": 0.514032,
+    "retrograde": false,
+    "line_progress": 0.4533,
+    "minutes_since_line_began": 1190.6,
+    "minutes_until_line_ends": 1435.7,
+    "fixation": null
+   },
+   "jupiter": {
+    "body": "jupiter",
+    "gate": 41,
+    "line": 5,
+    "color": 5,
+    "tone": 5,
+    "base": 4,
+    "gate_line": "41.5",
+    "longitude": 306.4966043,
+    "zodiac": "6\u00b029'48\" Aquarius",
+    "speed_deg_per_day": 0.0634162,
+    "retrograde": false,
+    "line_progress": 0.7964,
+    "minutes_since_line_began": 16953.3,
+    "minutes_until_line_ends": 4334.7,
+    "fixation": null
+   },
+   "saturn": {
+    "body": "saturn",
+    "gate": 60,
+    "line": 4,
+    "color": 5,
+    "tone": 2,
+    "base": 1,
+    "gate_line": "60.4",
+    "longitude": 299.8393299,
+    "zodiac": "29\u00b050'22\" Capricorn",
+    "speed_deg_per_day": 0.0072096,
+    "retrograde": false,
+    "line_progress": 0.6953,
+    "minutes_since_line_began": 130193.0,
+    "minutes_until_line_ends": 57058.2,
+    "fixation": null
+   },
+   "uranus": {
+    "body": "uranus",
+    "gate": 4,
+    "line": 3,
+    "color": 6,
+    "tone": 6,
+    "base": 2,
+    "gate_line": "4.3",
+    "longitude": 141.6704663,
+    "zodiac": "21\u00b040'14\" Leo",
+    "speed_deg_per_day": 0.0053929,
+    "retrograde": false,
+    "line_progress": 0.9818,
+    "minutes_since_line_began": 245779.4,
+    "minutes_until_line_ends": 4548.3,
+    "fixation": null
+   },
+   "neptune": {
+    "body": "neptune",
+    "gate": 44,
+    "line": 3,
+    "color": 3,
+    "tone": 1,
+    "base": 2,
+    "gate_line": "44.3",
+    "longitude": 219.8227889,
+    "zodiac": "9\u00b049'22\" Scorpio",
+    "speed_deg_per_day": -0.0271058,
+    "retrograde": true,
+    "line_progress": 0.6557,
+    "minutes_since_line_began": 32656.6,
+    "minutes_until_line_ends": 17148.2,
+    "fixation": "detriment"
+   },
+   "pluto": {
+    "body": "pluto",
+    "gate": 59,
+    "line": 6,
+    "color": 5,
+    "tone": 6,
+    "base": 2,
+    "gate_line": "59.6",
+    "longitude": 155.5738528,
+    "zodiac": "5\u00b034'26\" Virgo",
+    "speed_deg_per_day": -0.0059063,
+    "retrograde": true,
+    "line_progress": 0.1879,
+    "minutes_since_line_began": 42945.7,
+    "minutes_until_line_ends": 185622.2,
+    "fixation": null
+   }
+  }
+ },
+ "calculation": {
+  "engine": "swisseph",
+  "ephemeris": "Swiss Ephemeris 2.10.03, SE1 files (JPL DE431)",
+  "node": "true",
+  "design_arc_degrees": 88.0,
+  "zodiac": "tropical",
+  "frame": "geocentric apparent, true equinox of date",
+  "wheel_start": "Gate 41 at 2\u00b000' Aquarius (302\u00b0)"
+ },
+ "disclaimer": "Human Design is a belief system created in 1987. No scientific evidence shows that it describes personality, predicts behavior or outcomes, or is useful for making decisions. The planetary positions in this chart are astronomically accurate. The meanings attached to them are not supported by evidence. Do not use this chart for medical, psychological, financial, hiring or legal decisions."
+}

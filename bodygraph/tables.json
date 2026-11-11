@@ -1,0 +1,3999 @@
+{
+ "gate_center": {
+  "1": "g",
+  "2": "g",
+  "3": "sacral",
+  "4": "ajna",
+  "5": "sacral",
+  "6": "solar_plexus",
+  "7": "g",
+  "8": "throat",
+  "9": "sacral",
+  "10": "g",
+  "11": "ajna",
+  "12": "throat",
+  "13": "g",
+  "14": "sacral",
+  "15": "g",
+  "16": "throat",
+  "17": "ajna",
+  "18": "spleen",
+  "19": "root",
+  "20": "throat",
+  "21": "heart",
+  "22": "solar_plexus",
+  "23": "throat",
+  "24": "ajna",
+  "25": "g",
+  "26": "heart",
+  "27": "sacral",
+  "28": "spleen",
+  "29": "sacral",
+  "30": "solar_plexus",
+  "31": "throat",
+  "32": "spleen",
+  "33": "throat",
+  "34": "sacral",
+  "35": "throat",
+  "36": "solar_plexus",
+  "37": "solar_plexus",
+  "38": "root",
+  "39": "root",
+  "40": "heart",
+  "41": "root",
+  "42": "sacral",
+  "43": "ajna",
+  "44": "spleen",
+  "45": "throat",
+  "46": "g",
+  "47": "ajna",
+  "48": "spleen",
+  "49": "solar_plexus",
+  "50": "spleen",
+  "51": "heart",
+  "52": "root",
+  "53": "root",
+  "54": "root",
+  "55": "solar_plexus",
+  "56": "throat",
+  "57": "spleen",
+  "58": "root",
+  "59": "sacral",
+  "60": "root",
+  "61": "head",
+  "62": "throat",
+  "63": "head",
+  "64": "head"
+ },
+ "gate_names": {
+  "1": "The Creative",
+  "2": "The Receptive",
+  "3": "Ordering",
+  "4": "Formulization",
+  "5": "Fixed Rhythms",
+  "6": "Friction",
+  "7": "The Role of Self",
+  "8": "Contribution",
+  "9": "Focus",
+  "10": "Behavior of Self",
+  "11": "Ideas",
+  "12": "Caution",
+  "13": "The Listener",
+  "14": "Power Skills",
+  "15": "Extremes",
+  "16": "Skills",
+  "17": "Opinions",
+  "18": "Correction",
+  "19": "Wanting",
+  "20": "The Now",
+  "21": "The Hunter",
+  "22": "Openness",
+  "23": "Assimilation",
+  "24": "Rationalization",
+  "25": "Innocence",
+  "26": "The Trickster",
+  "27": "Caring",
+  "28": "The Player",
+  "29": "Perseverance",
+  "30": "Recognition of Feelings",
+  "31": "Leading",
+  "32": "Continuity",
+  "33": "Privacy",
+  "34": "Power",
+  "35": "Change",
+  "36": "Crisis",
+  "37": "Friendship",
+  "38": "The Fighter",
+  "39": "Provocation",
+  "40": "Aloneness",
+  "41": "Contraction",
+  "42": "Growth",
+  "43": "Insight",
+  "44": "Coming to Meet",
+  "45": "Gathering",
+  "46": "Love of Body",
+  "47": "Realization",
+  "48": "Depth",
+  "49": "Principles",
+  "50": "Values",
+  "51": "Shock",
+  "52": "Stillness",
+  "53": "Beginnings",
+  "54": "Ambition",
+  "55": "Spirit",
+  "56": "Stimulation",
+  "57": "Intuition",
+  "58": "Vitality",
+  "59": "Sexuality",
+  "60": "Limitation",
+  "61": "Mystery",
+  "62": "Details",
+  "63": "Doubt",
+  "64": "Confusion"
+ },
+ "iching": {
+  "1": "The Creative",
+  "2": "The Receptive",
+  "3": "Difficulty at the Beginning",
+  "4": "Youthful Folly",
+  "5": "Waiting",
+  "6": "Conflict",
+  "7": "The Army",
+  "8": "Holding Together",
+  "9": "The Taming Power of the Small",
+  "10": "Treading",
+  "11": "Peace",
+  "12": "Standstill",
+  "13": "Fellowship with Men",
+  "14": "Possession in Great Measure",
+  "15": "Modesty",
+  "16": "Enthusiasm",
+  "17": "Following",
+  "18": "Work on What Has Been Spoiled",
+  "19": "Approach",
+  "20": "Contemplation",
+  "21": "Biting Through",
+  "22": "Grace",
+  "23": "Splitting Apart",
+  "24": "Return",
+  "25": "Innocence",
+  "26": "The Taming Power of the Great",
+  "27": "The Corners of the Mouth",
+  "28": "Preponderance of the Great",
+  "29": "The Abysmal",
+  "30": "The Clinging",
+  "31": "Influence",
+  "32": "Duration",
+  "33": "Retreat",
+  "34": "The Power of the Great",
+  "35": "Progress",
+  "36": "Darkening of the Light",
+  "37": "The Family",
+  "38": "Opposition",
+  "39": "Obstruction",
+  "40": "Deliverance",
+  "41": "Decrease",
+  "42": "Increase",
+  "43": "Break-through",
+  "44": "Coming to Meet",
+  "45": "Gathering Together",
+  "46": "Pushing Upward",
+  "47": "Oppression",
+  "48": "The Well",
+  "49": "Revolution",
+  "50": "The Cauldron",
+  "51": "The Arousing",
+  "52": "Keeping Still",
+  "53": "Development",
+  "54": "The Marrying Maiden",
+  "55": "Abundance",
+  "56": "The Wanderer",
+  "57": "The Gentle",
+  "58": "The Joyous",
+  "59": "Dispersion",
+  "60": "Limitation",
+  "61": "Inner Truth",
+  "62": "Preponderance of the Small",
+  "63": "After Completion",
+  "64": "Before Completion"
+ },
+ "channels": [
+  {
+   "gates": [
+    1,
+    8
+   ],
+   "centers": [
+    "g",
+    "throat"
+   ],
+   "name": "Inspiration",
+   "channel_type": "projected",
+   "circuit": "Knowing",
+   "creative": true,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    2,
+    14
+   ],
+   "centers": [
+    "g",
+    "sacral"
+   ],
+   "name": "Beat",
+   "channel_type": "generated",
+   "circuit": "Knowing",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    3,
+    60
+   ],
+   "centers": [
+    "sacral",
+    "root"
+   ],
+   "name": "Mutation",
+   "channel_type": "generated",
+   "circuit": "Knowing",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    4,
+    63
+   ],
+   "centers": [
+    "ajna",
+    "head"
+   ],
+   "name": "Logic",
+   "channel_type": "projected",
+   "circuit": "Understanding",
+   "creative": false,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    5,
+    15
+   ],
+   "centers": [
+    "sacral",
+    "g"
+   ],
+   "name": "Rhythm",
+   "channel_type": "generated",
+   "circuit": "Understanding",
+   "creative": false,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    6,
+    59
+   ],
+   "centers": [
+    "solar_plexus",
+    "sacral"
+   ],
+   "name": "Intimacy",
+   "channel_type": "generated",
+   "circuit": "Defense",
+   "creative": true,
+   "circuit_group": "Tribal"
+  },
+  {
+   "gates": [
+    7,
+    31
+   ],
+   "centers": [
+    "g",
+    "throat"
+   ],
+   "name": "The Alpha",
+   "channel_type": "projected",
+   "circuit": "Understanding",
+   "creative": false,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    9,
+    52
+   ],
+   "centers": [
+    "sacral",
+    "root"
+   ],
+   "name": "Concentration",
+   "channel_type": "generated",
+   "circuit": "Understanding",
+   "creative": false,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    10,
+    20
+   ],
+   "centers": [
+    "g",
+    "throat"
+   ],
+   "name": "Awakening",
+   "channel_type": "projected",
+   "circuit": "Integration",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    10,
+    34
+   ],
+   "centers": [
+    "g",
+    "sacral"
+   ],
+   "name": "Exploration",
+   "channel_type": "generated",
+   "circuit": "Centering",
+   "creative": true,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    10,
+    57
+   ],
+   "centers": [
+    "g",
+    "spleen"
+   ],
+   "name": "Perfected Form",
+   "channel_type": "projected",
+   "circuit": "Integration",
+   "creative": true,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    11,
+    56
+   ],
+   "centers": [
+    "ajna",
+    "throat"
+   ],
+   "name": "Curiosity",
+   "channel_type": "projected",
+   "circuit": "Sensing",
+   "creative": false,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    12,
+    22
+   ],
+   "centers": [
+    "throat",
+    "solar_plexus"
+   ],
+   "name": "Openness",
+   "channel_type": "manifested",
+   "circuit": "Knowing",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    13,
+    33
+   ],
+   "centers": [
+    "g",
+    "throat"
+   ],
+   "name": "The Prodigal",
+   "channel_type": "projected",
+   "circuit": "Sensing",
+   "creative": false,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    16,
+    48
+   ],
+   "centers": [
+    "throat",
+    "spleen"
+   ],
+   "name": "The Wavelength",
+   "channel_type": "projected",
+   "circuit": "Understanding",
+   "creative": true,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    17,
+    62
+   ],
+   "centers": [
+    "ajna",
+    "throat"
+   ],
+   "name": "Acceptance",
+   "channel_type": "projected",
+   "circuit": "Understanding",
+   "creative": false,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    18,
+    58
+   ],
+   "centers": [
+    "spleen",
+    "root"
+   ],
+   "name": "Judgement",
+   "channel_type": "projected",
+   "circuit": "Understanding",
+   "creative": false,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    19,
+    49
+   ],
+   "centers": [
+    "root",
+    "solar_plexus"
+   ],
+   "name": "Synthesis",
+   "channel_type": "projected",
+   "circuit": "Ego",
+   "creative": false,
+   "circuit_group": "Tribal"
+  },
+  {
+   "gates": [
+    20,
+    34
+   ],
+   "centers": [
+    "throat",
+    "sacral"
+   ],
+   "name": "Charisma",
+   "channel_type": "manifesting_generated",
+   "circuit": "Integration",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    20,
+    57
+   ],
+   "centers": [
+    "throat",
+    "spleen"
+   ],
+   "name": "The Brainwave",
+   "channel_type": "projected",
+   "circuit": "Knowing",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    21,
+    45
+   ],
+   "centers": [
+    "heart",
+    "throat"
+   ],
+   "name": "The Money Line",
+   "channel_type": "manifested",
+   "circuit": "Ego",
+   "creative": false,
+   "circuit_group": "Tribal"
+  },
+  {
+   "gates": [
+    23,
+    43
+   ],
+   "centers": [
+    "throat",
+    "ajna"
+   ],
+   "name": "Structuring",
+   "channel_type": "projected",
+   "circuit": "Knowing",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    24,
+    61
+   ],
+   "centers": [
+    "ajna",
+    "head"
+   ],
+   "name": "Awareness",
+   "channel_type": "projected",
+   "circuit": "Knowing",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    25,
+    51
+   ],
+   "centers": [
+    "g",
+    "heart"
+   ],
+   "name": "Initiation",
+   "channel_type": "projected",
+   "circuit": "Centering",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    26,
+    44
+   ],
+   "centers": [
+    "heart",
+    "spleen"
+   ],
+   "name": "Surrender",
+   "channel_type": "projected",
+   "circuit": "Ego",
+   "creative": true,
+   "circuit_group": "Tribal"
+  },
+  {
+   "gates": [
+    27,
+    50
+   ],
+   "centers": [
+    "sacral",
+    "spleen"
+   ],
+   "name": "Preservation",
+   "channel_type": "generated",
+   "circuit": "Defense",
+   "creative": false,
+   "circuit_group": "Tribal"
+  },
+  {
+   "gates": [
+    28,
+    38
+   ],
+   "centers": [
+    "spleen",
+    "root"
+   ],
+   "name": "Struggle",
+   "channel_type": "projected",
+   "circuit": "Knowing",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    29,
+    46
+   ],
+   "centers": [
+    "sacral",
+    "g"
+   ],
+   "name": "Discovery",
+   "channel_type": "generated",
+   "circuit": "Sensing",
+   "creative": false,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    30,
+    41
+   ],
+   "centers": [
+    "solar_plexus",
+    "root"
+   ],
+   "name": "Recognition",
+   "channel_type": "projected",
+   "circuit": "Sensing",
+   "creative": false,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    32,
+    54
+   ],
+   "centers": [
+    "spleen",
+    "root"
+   ],
+   "name": "Transformation",
+   "channel_type": "projected",
+   "circuit": "Ego",
+   "creative": false,
+   "circuit_group": "Tribal"
+  },
+  {
+   "gates": [
+    34,
+    57
+   ],
+   "centers": [
+    "sacral",
+    "spleen"
+   ],
+   "name": "Power",
+   "channel_type": "generated",
+   "circuit": "Integration",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    35,
+    36
+   ],
+   "centers": [
+    "throat",
+    "solar_plexus"
+   ],
+   "name": "Transitoriness",
+   "channel_type": "projected",
+   "circuit": "Sensing",
+   "creative": true,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    37,
+    40
+   ],
+   "centers": [
+    "solar_plexus",
+    "heart"
+   ],
+   "name": "Community",
+   "channel_type": "projected",
+   "circuit": "Ego",
+   "creative": false,
+   "circuit_group": "Tribal"
+  },
+  {
+   "gates": [
+    39,
+    55
+   ],
+   "centers": [
+    "root",
+    "solar_plexus"
+   ],
+   "name": "Emoting",
+   "channel_type": "projected",
+   "circuit": "Knowing",
+   "creative": false,
+   "circuit_group": "Individual"
+  },
+  {
+   "gates": [
+    42,
+    53
+   ],
+   "centers": [
+    "sacral",
+    "root"
+   ],
+   "name": "Maturation",
+   "channel_type": "generated",
+   "circuit": "Sensing",
+   "creative": false,
+   "circuit_group": "Collective"
+  },
+  {
+   "gates": [
+    47,
+    64
+   ],
+   "centers": [
+    "ajna",
+    "head"
+   ],
+   "name": "Abstraction",
+   "channel_type": "projected",
+   "circuit": "Sensing",
+   "creative": false,
+   "circuit_group": "Collective"
+  }
+ ],
+ "crosses": {
+  "1:juxtaposition": {
+   "name": "Self Expression",
+   "gates": [
+    1,
+    2,
+    4,
+    49
+   ]
+  },
+  "1:left": {
+   "name": "Defiance 2",
+   "gates": [
+    1,
+    2,
+    4,
+    49
+   ]
+  },
+  "1:right": {
+   "name": "The Sphinx 4",
+   "gates": [
+    1,
+    2,
+    7,
+    13
+   ]
+  },
+  "2:juxtaposition": {
+   "name": "The Driver",
+   "gates": [
+    2,
+    1,
+    49,
+    4
+   ]
+  },
+  "2:left": {
+   "name": "Defiance 1",
+   "gates": [
+    2,
+    1,
+    49,
+    4
+   ]
+  },
+  "2:right": {
+   "name": "The Sphinx 2",
+   "gates": [
+    2,
+    1,
+    13,
+    7
+   ]
+  },
+  "3:juxtaposition": {
+   "name": "Mutation",
+   "gates": [
+    3,
+    50,
+    41,
+    31
+   ]
+  },
+  "3:left": {
+   "name": "Wishes 1",
+   "gates": [
+    3,
+    50,
+    41,
+    31
+   ]
+  },
+  "3:right": {
+   "name": "Laws 1",
+   "gates": [
+    3,
+    50,
+    60,
+    56
+   ]
+  },
+  "4:juxtaposition": {
+   "name": "Formulization",
+   "gates": [
+    4,
+    49,
+    8,
+    14
+   ]
+  },
+  "4:left": {
+   "name": "Revolution 2",
+   "gates": [
+    4,
+    49,
+    8,
+    14
+   ]
+  },
+  "4:right": {
+   "name": "Explanation 3",
+   "gates": [
+    4,
+    49,
+    23,
+    43
+   ]
+  },
+  "5:juxtaposition": {
+   "name": "Habits",
+   "gates": [
+    5,
+    35,
+    47,
+    22
+   ]
+  },
+  "5:left": {
+   "name": "Separation 2",
+   "gates": [
+    5,
+    35,
+    47,
+    22
+   ]
+  },
+  "5:right": {
+   "name": "Consciousness 4",
+   "gates": [
+    5,
+    35,
+    64,
+    63
+   ]
+  },
+  "6:juxtaposition": {
+   "name": "Conflict",
+   "gates": [
+    6,
+    36,
+    15,
+    10
+   ]
+  },
+  "6:left": {
+   "name": "The Plane 2",
+   "gates": [
+    6,
+    36,
+    15,
+    10
+   ]
+  },
+  "6:right": {
+   "name": "Eden 3",
+   "gates": [
+    6,
+    36,
+    12,
+    11
+   ]
+  },
+  "7:juxtaposition": {
+   "name": "Interaction",
+   "gates": [
+    7,
+    13,
+    23,
+    43
+   ]
+  },
+  "7:left": {
+   "name": "Masks 2",
+   "gates": [
+    7,
+    13,
+    23,
+    43
+   ]
+  },
+  "7:right": {
+   "name": "The Sphinx 3",
+   "gates": [
+    7,
+    13,
+    2,
+    1
+   ]
+  },
+  "8:juxtaposition": {
+   "name": "Contribution",
+   "gates": [
+    8,
+    14,
+    55,
+    59
+   ]
+  },
+  "8:left": {
+   "name": "Uncertainty 1",
+   "gates": [
+    8,
+    14,
+    55,
+    59
+   ]
+  },
+  "8:right": {
+   "name": "Contagion 2",
+   "gates": [
+    8,
+    14,
+    30,
+    29
+   ]
+  },
+  "9:juxtaposition": {
+   "name": "Focus",
+   "gates": [
+    9,
+    16,
+    64,
+    63
+   ]
+  },
+  "9:left": {
+   "name": "Identification 2",
+   "gates": [
+    9,
+    16,
+    64,
+    63
+   ]
+  },
+  "9:right": {
+   "name": "Planning 4",
+   "gates": [
+    9,
+    16,
+    40,
+    37
+   ]
+  },
+  "10:juxtaposition": {
+   "name": "Behavior",
+   "gates": [
+    10,
+    15,
+    18,
+    17
+   ]
+  },
+  "10:left": {
+   "name": "Prevention 2",
+   "gates": [
+    10,
+    15,
+    18,
+    17
+   ]
+  },
+  "10:right": {
+   "name": "The Vessel of Love 4",
+   "gates": [
+    10,
+    15,
+    46,
+    25
+   ]
+  },
+  "11:juxtaposition": {
+   "name": "Ideas",
+   "gates": [
+    11,
+    12,
+    46,
+    25
+   ]
+  },
+  "11:left": {
+   "name": "Education 2",
+   "gates": [
+    11,
+    12,
+    46,
+    25
+   ]
+  },
+  "11:right": {
+   "name": "Eden 4",
+   "gates": [
+    11,
+    12,
+    6,
+    36
+   ]
+  },
+  "12:juxtaposition": {
+   "name": "Articulation",
+   "gates": [
+    12,
+    11,
+    25,
+    46
+   ]
+  },
+  "12:left": {
+   "name": "Education 1",
+   "gates": [
+    12,
+    11,
+    25,
+    46
+   ]
+  },
+  "12:right": {
+   "name": "Eden 2",
+   "gates": [
+    12,
+    11,
+    36,
+    6
+   ]
+  },
+  "13:juxtaposition": {
+   "name": "Listening",
+   "gates": [
+    13,
+    7,
+    43,
+    23
+   ]
+  },
+  "13:left": {
+   "name": "Masks 1",
+   "gates": [
+    13,
+    7,
+    43,
+    23
+   ]
+  },
+  "13:right": {
+   "name": "The Sphinx 1",
+   "gates": [
+    13,
+    7,
+    1,
+    2
+   ]
+  },
+  "14:juxtaposition": {
+   "name": "Empowering",
+   "gates": [
+    14,
+    8,
+    59,
+    55
+   ]
+  },
+  "14:left": {
+   "name": "Uncertainty 2",
+   "gates": [
+    14,
+    8,
+    59,
+    55
+   ]
+  },
+  "14:right": {
+   "name": "Contagion 4",
+   "gates": [
+    14,
+    8,
+    29,
+    30
+   ]
+  },
+  "15:juxtaposition": {
+   "name": "Extremes",
+   "gates": [
+    15,
+    10,
+    17,
+    18
+   ]
+  },
+  "15:left": {
+   "name": "Prevention 1",
+   "gates": [
+    15,
+    10,
+    17,
+    18
+   ]
+  },
+  "15:right": {
+   "name": "The Vessel of Love 2",
+   "gates": [
+    15,
+    10,
+    25,
+    46
+   ]
+  },
+  "16:juxtaposition": {
+   "name": "Experimentation",
+   "gates": [
+    16,
+    9,
+    63,
+    64
+   ]
+  },
+  "16:left": {
+   "name": "Identification 1",
+   "gates": [
+    16,
+    9,
+    63,
+    64
+   ]
+  },
+  "16:right": {
+   "name": "Planning 2",
+   "gates": [
+    16,
+    9,
+    37,
+    40
+   ]
+  },
+  "17:juxtaposition": {
+   "name": "Opinions",
+   "gates": [
+    17,
+    18,
+    38,
+    39
+   ]
+  },
+  "17:left": {
+   "name": "Upheaval 1",
+   "gates": [
+    17,
+    18,
+    38,
+    39
+   ]
+  },
+  "17:right": {
+   "name": "Service 1",
+   "gates": [
+    17,
+    18,
+    58,
+    52
+   ]
+  },
+  "18:juxtaposition": {
+   "name": "Correction",
+   "gates": [
+    18,
+    17,
+    39,
+    38
+   ]
+  },
+  "18:left": {
+   "name": "Upheaval 2",
+   "gates": [
+    18,
+    17,
+    39,
+    38
+   ]
+  },
+  "18:right": {
+   "name": "Service 3",
+   "gates": [
+    18,
+    17,
+    52,
+    58
+   ]
+  },
+  "19:juxtaposition": {
+   "name": "Need",
+   "gates": [
+    19,
+    33,
+    1,
+    2
+   ]
+  },
+  "19:left": {
+   "name": "Refinement 2",
+   "gates": [
+    19,
+    33,
+    1,
+    2
+   ]
+  },
+  "19:right": {
+   "name": "The Four Ways 4",
+   "gates": [
+    19,
+    33,
+    44,
+    24
+   ]
+  },
+  "20:juxtaposition": {
+   "name": "The Now",
+   "gates": [
+    20,
+    34,
+    37,
+    40
+   ]
+  },
+  "20:left": {
+   "name": "Duality 1",
+   "gates": [
+    20,
+    34,
+    37,
+    40
+   ]
+  },
+  "20:right": {
+   "name": "The Sleeping Phoenix 2",
+   "gates": [
+    20,
+    34,
+    55,
+    59
+   ]
+  },
+  "21:juxtaposition": {
+   "name": "Control",
+   "gates": [
+    21,
+    48,
+    54,
+    53
+   ]
+  },
+  "21:left": {
+   "name": "Endeavour 1",
+   "gates": [
+    21,
+    48,
+    54,
+    53
+   ]
+  },
+  "21:right": {
+   "name": "Tension 1",
+   "gates": [
+    21,
+    48,
+    38,
+    39
+   ]
+  },
+  "22:juxtaposition": {
+   "name": "Grace",
+   "gates": [
+    22,
+    47,
+    11,
+    12
+   ]
+  },
+  "22:left": {
+   "name": "Informing 1",
+   "gates": [
+    22,
+    47,
+    11,
+    12
+   ]
+  },
+  "22:right": {
+   "name": "Rulership 1",
+   "gates": [
+    22,
+    47,
+    26,
+    45
+   ]
+  },
+  "23:juxtaposition": {
+   "name": "Assimilation",
+   "gates": [
+    23,
+    43,
+    30,
+    29
+   ]
+  },
+  "23:left": {
+   "name": "Dedication 1",
+   "gates": [
+    23,
+    43,
+    30,
+    29
+   ]
+  },
+  "23:right": {
+   "name": "Explanation 2",
+   "gates": [
+    23,
+    43,
+    49,
+    4
+   ]
+  },
+  "24:juxtaposition": {
+   "name": "Rationalization",
+   "gates": [
+    24,
+    44,
+    13,
+    7
+   ]
+  },
+  "24:left": {
+   "name": "Incarnation 1",
+   "gates": [
+    24,
+    44,
+    13,
+    7
+   ]
+  },
+  "24:right": {
+   "name": "The Four Ways 1",
+   "gates": [
+    24,
+    44,
+    19,
+    33
+   ]
+  },
+  "25:juxtaposition": {
+   "name": "Innocence",
+   "gates": [
+    25,
+    46,
+    58,
+    52
+   ]
+  },
+  "25:left": {
+   "name": "Healing 1",
+   "gates": [
+    25,
+    46,
+    58,
+    52
+   ]
+  },
+  "25:right": {
+   "name": "The Vessel of Love 1",
+   "gates": [
+    25,
+    46,
+    10,
+    15
+   ]
+  },
+  "26:juxtaposition": {
+   "name": "The Trickster",
+   "gates": [
+    26,
+    45,
+    6,
+    36
+   ]
+  },
+  "26:left": {
+   "name": "Confrontation 2",
+   "gates": [
+    26,
+    45,
+    6,
+    36
+   ]
+  },
+  "26:right": {
+   "name": "Rulership 4",
+   "gates": [
+    26,
+    45,
+    47,
+    22
+   ]
+  },
+  "27:juxtaposition": {
+   "name": "Caring",
+   "gates": [
+    27,
+    28,
+    19,
+    33
+   ]
+  },
+  "27:left": {
+   "name": "Alignment 1",
+   "gates": [
+    27,
+    28,
+    19,
+    33
+   ]
+  },
+  "27:right": {
+   "name": "The Unexpected 1",
+   "gates": [
+    27,
+    28,
+    41,
+    31
+   ]
+  },
+  "28:juxtaposition": {
+   "name": "Risks",
+   "gates": [
+    28,
+    27,
+    33,
+    19
+   ]
+  },
+  "28:left": {
+   "name": "Alignment 2",
+   "gates": [
+    28,
+    27,
+    33,
+    19
+   ]
+  },
+  "28:right": {
+   "name": "The Unexpected 3",
+   "gates": [
+    28,
+    27,
+    31,
+    41
+   ]
+  },
+  "29:juxtaposition": {
+   "name": "Commitment",
+   "gates": [
+    29,
+    30,
+    20,
+    34
+   ]
+  },
+  "29:left": {
+   "name": "Industry 2",
+   "gates": [
+    29,
+    30,
+    20,
+    34
+   ]
+  },
+  "29:right": {
+   "name": "Contagion 3",
+   "gates": [
+    29,
+    30,
+    8,
+    14
+   ]
+  },
+  "30:juxtaposition": {
+   "name": "Fates",
+   "gates": [
+    30,
+    29,
+    34,
+    20
+   ]
+  },
+  "30:left": {
+   "name": "Industry 1",
+   "gates": [
+    30,
+    29,
+    34,
+    20
+   ]
+  },
+  "30:right": {
+   "name": "Contagion 1",
+   "gates": [
+    30,
+    29,
+    14,
+    8
+   ]
+  },
+  "31:juxtaposition": {
+   "name": "Influence",
+   "gates": [
+    31,
+    41,
+    24,
+    44
+   ]
+  },
+  "31:left": {
+   "name": "The Alpha 1",
+   "gates": [
+    31,
+    41,
+    24,
+    44
+   ]
+  },
+  "31:right": {
+   "name": "The Unexpected 2",
+   "gates": [
+    31,
+    41,
+    27,
+    28
+   ]
+  },
+  "32:juxtaposition": {
+   "name": "Conservation",
+   "gates": [
+    32,
+    42,
+    56,
+    60
+   ]
+  },
+  "32:left": {
+   "name": "Limitation 2",
+   "gates": [
+    32,
+    42,
+    56,
+    60
+   ]
+  },
+  "32:right": {
+   "name": "Maya 3",
+   "gates": [
+    32,
+    42,
+    62,
+    61
+   ]
+  },
+  "33:juxtaposition": {
+   "name": "Retreat",
+   "gates": [
+    33,
+    19,
+    2,
+    1
+   ]
+  },
+  "33:left": {
+   "name": "Refinement 1",
+   "gates": [
+    33,
+    19,
+    2,
+    1
+   ]
+  },
+  "33:right": {
+   "name": "The Four Ways 2",
+   "gates": [
+    33,
+    19,
+    24,
+    44
+   ]
+  },
+  "34:juxtaposition": {
+   "name": "Power",
+   "gates": [
+    34,
+    20,
+    40,
+    37
+   ]
+  },
+  "34:left": {
+   "name": "Duality 2",
+   "gates": [
+    34,
+    20,
+    40,
+    37
+   ]
+  },
+  "34:right": {
+   "name": "The Sleeping Phoenix 4",
+   "gates": [
+    34,
+    20,
+    59,
+    55
+   ]
+  },
+  "35:juxtaposition": {
+   "name": "Experience",
+   "gates": [
+    35,
+    5,
+    22,
+    47
+   ]
+  },
+  "35:left": {
+   "name": "Separation 1",
+   "gates": [
+    35,
+    5,
+    22,
+    47
+   ]
+  },
+  "35:right": {
+   "name": "Consciousness 2",
+   "gates": [
+    35,
+    5,
+    63,
+    64
+   ]
+  },
+  "36:juxtaposition": {
+   "name": "Crisis",
+   "gates": [
+    36,
+    6,
+    10,
+    15
+   ]
+  },
+  "36:left": {
+   "name": "The Plane 1",
+   "gates": [
+    36,
+    6,
+    10,
+    15
+   ]
+  },
+  "36:right": {
+   "name": "Eden 1",
+   "gates": [
+    36,
+    6,
+    11,
+    12
+   ]
+  },
+  "37:juxtaposition": {
+   "name": "Bargains",
+   "gates": [
+    37,
+    40,
+    5,
+    35
+   ]
+  },
+  "37:left": {
+   "name": "Migration 1",
+   "gates": [
+    37,
+    40,
+    5,
+    35
+   ]
+  },
+  "37:right": {
+   "name": "Planning 1",
+   "gates": [
+    37,
+    40,
+    9,
+    16
+   ]
+  },
+  "38:juxtaposition": {
+   "name": "Opposition",
+   "gates": [
+    38,
+    39,
+    57,
+    51
+   ]
+  },
+  "38:left": {
+   "name": "Individualism 2",
+   "gates": [
+    38,
+    39,
+    57,
+    51
+   ]
+  },
+  "38:right": {
+   "name": "Tension 4",
+   "gates": [
+    38,
+    39,
+    48,
+    21
+   ]
+  },
+  "39:juxtaposition": {
+   "name": "Provocation",
+   "gates": [
+    39,
+    38,
+    51,
+    57
+   ]
+  },
+  "39:left": {
+   "name": "Individualism 1",
+   "gates": [
+    39,
+    38,
+    51,
+    57
+   ]
+  },
+  "39:right": {
+   "name": "Tension 2",
+   "gates": [
+    39,
+    38,
+    21,
+    48
+   ]
+  },
+  "40:juxtaposition": {
+   "name": "Denial",
+   "gates": [
+    40,
+    37,
+    35,
+    5
+   ]
+  },
+  "40:left": {
+   "name": "Migration 2",
+   "gates": [
+    40,
+    37,
+    35,
+    5
+   ]
+  },
+  "40:right": {
+   "name": "Planning 3",
+   "gates": [
+    40,
+    37,
+    16,
+    9
+   ]
+  },
+  "41:juxtaposition": {
+   "name": "Fantasy",
+   "gates": [
+    41,
+    31,
+    44,
+    24
+   ]
+  },
+  "41:left": {
+   "name": "The Alpha 2",
+   "gates": [
+    41,
+    31,
+    44,
+    24
+   ]
+  },
+  "41:right": {
+   "name": "The Unexpected 4",
+   "gates": [
+    41,
+    31,
+    28,
+    27
+   ]
+  },
+  "42:juxtaposition": {
+   "name": "Completion",
+   "gates": [
+    42,
+    32,
+    60,
+    56
+   ]
+  },
+  "42:left": {
+   "name": "Limitation 1",
+   "gates": [
+    42,
+    32,
+    60,
+    56
+   ]
+  },
+  "42:right": {
+   "name": "Maya 1",
+   "gates": [
+    42,
+    32,
+    61,
+    62
+   ]
+  },
+  "43:juxtaposition": {
+   "name": "Insight",
+   "gates": [
+    43,
+    23,
+    29,
+    30
+   ]
+  },
+  "43:left": {
+   "name": "Dedication 2",
+   "gates": [
+    43,
+    23,
+    29,
+    30
+   ]
+  },
+  "43:right": {
+   "name": "Explanation 4",
+   "gates": [
+    43,
+    23,
+    4,
+    49
+   ]
+  },
+  "44:juxtaposition": {
+   "name": "Alertness",
+   "gates": [
+    44,
+    24,
+    7,
+    13
+   ]
+  },
+  "44:left": {
+   "name": "Incarnation 2",
+   "gates": [
+    44,
+    24,
+    7,
+    13
+   ]
+  },
+  "44:right": {
+   "name": "The Four Ways 3",
+   "gates": [
+    44,
+    24,
+    33,
+    19
+   ]
+  },
+  "45:juxtaposition": {
+   "name": "Possession",
+   "gates": [
+    45,
+    26,
+    36,
+    6
+   ]
+  },
+  "45:left": {
+   "name": "Confrontation 1",
+   "gates": [
+    45,
+    26,
+    36,
+    6
+   ]
+  },
+  "45:right": {
+   "name": "Rulership 2",
+   "gates": [
+    45,
+    26,
+    22,
+    47
+   ]
+  },
+  "46:juxtaposition": {
+   "name": "Serendipity",
+   "gates": [
+    46,
+    25,
+    52,
+    58
+   ]
+  },
+  "46:left": {
+   "name": "Healing 2",
+   "gates": [
+    46,
+    25,
+    52,
+    58
+   ]
+  },
+  "46:right": {
+   "name": "The Vessel of Love 3",
+   "gates": [
+    46,
+    25,
+    15,
+    10
+   ]
+  },
+  "47:juxtaposition": {
+   "name": "Oppression",
+   "gates": [
+    47,
+    22,
+    12,
+    11
+   ]
+  },
+  "47:left": {
+   "name": "Informing 2",
+   "gates": [
+    47,
+    22,
+    12,
+    11
+   ]
+  },
+  "47:right": {
+   "name": "Rulership 3",
+   "gates": [
+    47,
+    22,
+    45,
+    26
+   ]
+  },
+  "48:juxtaposition": {
+   "name": "Depth",
+   "gates": [
+    48,
+    21,
+    53,
+    54
+   ]
+  },
+  "48:left": {
+   "name": "Endeavour 2",
+   "gates": [
+    48,
+    21,
+    53,
+    54
+   ]
+  },
+  "48:right": {
+   "name": "Tension 3",
+   "gates": [
+    48,
+    21,
+    39,
+    38
+   ]
+  },
+  "49:juxtaposition": {
+   "name": "Principles",
+   "gates": [
+    49,
+    4,
+    14,
+    8
+   ]
+  },
+  "49:left": {
+   "name": "Revolution 1",
+   "gates": [
+    49,
+    4,
+    14,
+    8
+   ]
+  },
+  "49:right": {
+   "name": "Explanation 1",
+   "gates": [
+    49,
+    4,
+    43,
+    23
+   ]
+  },
+  "50:juxtaposition": {
+   "name": "Values",
+   "gates": [
+    50,
+    3,
+    31,
+    41
+   ]
+  },
+  "50:left": {
+   "name": "Wishes 2",
+   "gates": [
+    50,
+    3,
+    31,
+    41
+   ]
+  },
+  "50:right": {
+   "name": "Laws 3",
+   "gates": [
+    50,
+    3,
+    56,
+    60
+   ]
+  },
+  "51:juxtaposition": {
+   "name": "Shock",
+   "gates": [
+    51,
+    57,
+    61,
+    62
+   ]
+  },
+  "51:left": {
+   "name": "The Clarion 1",
+   "gates": [
+    51,
+    57,
+    61,
+    62
+   ]
+  },
+  "51:right": {
+   "name": "Penetration 1",
+   "gates": [
+    51,
+    57,
+    54,
+    53
+   ]
+  },
+  "52:juxtaposition": {
+   "name": "Stillness",
+   "gates": [
+    52,
+    58,
+    21,
+    48
+   ]
+  },
+  "52:left": {
+   "name": "Demands 1",
+   "gates": [
+    52,
+    58,
+    21,
+    48
+   ]
+  },
+  "52:right": {
+   "name": "Service 2",
+   "gates": [
+    52,
+    58,
+    17,
+    18
+   ]
+  },
+  "53:juxtaposition": {
+   "name": "Beginnings",
+   "gates": [
+    53,
+    54,
+    42,
+    32
+   ]
+  },
+  "53:left": {
+   "name": "Cycles 1",
+   "gates": [
+    53,
+    54,
+    42,
+    32
+   ]
+  },
+  "53:right": {
+   "name": "Penetration 2",
+   "gates": [
+    53,
+    54,
+    51,
+    57
+   ]
+  },
+  "54:juxtaposition": {
+   "name": "Ambition",
+   "gates": [
+    54,
+    53,
+    32,
+    42
+   ]
+  },
+  "54:left": {
+   "name": "Cycles 2",
+   "gates": [
+    54,
+    53,
+    32,
+    42
+   ]
+  },
+  "54:right": {
+   "name": "Penetration 4",
+   "gates": [
+    54,
+    53,
+    57,
+    51
+   ]
+  },
+  "55:juxtaposition": {
+   "name": "Moods",
+   "gates": [
+    55,
+    59,
+    9,
+    16
+   ]
+  },
+  "55:left": {
+   "name": "Spirit 1",
+   "gates": [
+    55,
+    59,
+    9,
+    16
+   ]
+  },
+  "55:right": {
+   "name": "The Sleeping Phoenix 1",
+   "gates": [
+    55,
+    59,
+    34,
+    20
+   ]
+  },
+  "56:juxtaposition": {
+   "name": "Stimulation",
+   "gates": [
+    56,
+    60,
+    27,
+    28
+   ]
+  },
+  "56:left": {
+   "name": "Distraction 1",
+   "gates": [
+    56,
+    60,
+    27,
+    28
+   ]
+  },
+  "56:right": {
+   "name": "Laws 2",
+   "gates": [
+    56,
+    60,
+    3,
+    50
+   ]
+  },
+  "57:juxtaposition": {
+   "name": "Intuition",
+   "gates": [
+    57,
+    51,
+    62,
+    61
+   ]
+  },
+  "57:left": {
+   "name": "The Clarion 2",
+   "gates": [
+    57,
+    51,
+    62,
+    61
+   ]
+  },
+  "57:right": {
+   "name": "Penetration 3",
+   "gates": [
+    57,
+    51,
+    53,
+    54
+   ]
+  },
+  "58:juxtaposition": {
+   "name": "Vitality",
+   "gates": [
+    58,
+    52,
+    48,
+    21
+   ]
+  },
+  "58:left": {
+   "name": "Demands 2",
+   "gates": [
+    58,
+    52,
+    48,
+    21
+   ]
+  },
+  "58:right": {
+   "name": "Service 4",
+   "gates": [
+    58,
+    52,
+    18,
+    17
+   ]
+  },
+  "59:juxtaposition": {
+   "name": "Strategy",
+   "gates": [
+    59,
+    55,
+    16,
+    9
+   ]
+  },
+  "59:left": {
+   "name": "Spirit 2",
+   "gates": [
+    59,
+    55,
+    16,
+    9
+   ]
+  },
+  "59:right": {
+   "name": "The Sleeping Phoenix 3",
+   "gates": [
+    59,
+    55,
+    20,
+    34
+   ]
+  },
+  "60:juxtaposition": {
+   "name": "Limitation",
+   "gates": [
+    60,
+    56,
+    28,
+    27
+   ]
+  },
+  "60:left": {
+   "name": "Distraction 2",
+   "gates": [
+    60,
+    56,
+    28,
+    27
+   ]
+  },
+  "60:right": {
+   "name": "Laws 4",
+   "gates": [
+    60,
+    56,
+    50,
+    3
+   ]
+  },
+  "61:juxtaposition": {
+   "name": "Thinking",
+   "gates": [
+    61,
+    62,
+    50,
+    3
+   ]
+  },
+  "61:left": {
+   "name": "Obscuration 2",
+   "gates": [
+    61,
+    62,
+    50,
+    3
+   ]
+  },
+  "61:right": {
+   "name": "Maya 4",
+   "gates": [
+    61,
+    62,
+    32,
+    42
+   ]
+  },
+  "62:juxtaposition": {
+   "name": "Detail",
+   "gates": [
+    62,
+    61,
+    3,
+    50
+   ]
+  },
+  "62:left": {
+   "name": "Obscuration 1",
+   "gates": [
+    62,
+    61,
+    3,
+    50
+   ]
+  },
+  "62:right": {
+   "name": "Maya 2",
+   "gates": [
+    62,
+    61,
+    42,
+    32
+   ]
+  },
+  "63:juxtaposition": {
+   "name": "Doubts",
+   "gates": [
+    63,
+    64,
+    26,
+    45
+   ]
+  },
+  "63:left": {
+   "name": "Dominion 1",
+   "gates": [
+    63,
+    64,
+    26,
+    45
+   ]
+  },
+  "63:right": {
+   "name": "Consciousness 1",
+   "gates": [
+    63,
+    64,
+    5,
+    35
+   ]
+  },
+  "64:juxtaposition": {
+   "name": "Confusion",
+   "gates": [
+    64,
+    63,
+    45,
+    26
+   ]
+  },
+  "64:left": {
+   "name": "Dominion 2",
+   "gates": [
+    64,
+    63,
+    45,
+    26
+   ]
+  },
+  "64:right": {
+   "name": "Consciousness 3",
+   "gates": [
+    64,
+    63,
+    35,
+    5
+   ]
+  }
+ },
+ "fixations": {
+  "1.1": {
+   "moon": "exalted",
+   "uranus": "detriment"
+  },
+  "4.1": {
+   "moon": "exalted",
+   "earth": "detriment"
+  },
+  "4.2": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "5.3": {
+   "moon": "detriment",
+   "neptune": "exalted"
+  },
+  "6.5": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "7.3": {
+   "moon": "exalted",
+   "mercury": "detriment"
+  },
+  "8.3": {
+   "moon": "exalted",
+   "saturn": "detriment"
+  },
+  "9.4": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "9.6": {
+   "moon": "exalted",
+   "pluto": "detriment"
+  },
+  "10.1": {
+   "moon": "detriment",
+   "sun": "exalted"
+  },
+  "10.3": {
+   "moon": "detriment",
+   "earth": "exalted"
+  },
+  "11.1": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "11.4": {
+   "moon": "exalted",
+   "sun": "detriment"
+  },
+  "11.5": {
+   "moon": "exalted",
+   "mercury": "detriment"
+  },
+  "13.1": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "13.2": {
+   "moon": "exalted",
+   "sun": "detriment"
+  },
+  "14.4": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "16.3": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "16.5": {
+   "moon": "detriment",
+   "pluto": "exalted"
+  },
+  "17.2": {
+   "moon": "detriment",
+   "sun": "exalted"
+  },
+  "17.6": {
+   "moon": "exalted",
+   "jupiter": "detriment"
+  },
+  "18.2": {
+   "moon": "detriment",
+   "pluto": "exalted"
+  },
+  "18.6": {
+   "moon": "detriment",
+   "mars": "exalted"
+  },
+  "19.1": {
+   "moon": "detriment",
+   "sun": "exalted"
+  },
+  "19.3": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "20.1": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "20.2": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "21.1": {
+   "moon": "detriment",
+   "mars": "exalted"
+  },
+  "22.1": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "23.2": {
+   "moon": "detriment",
+   "jupiter": "exalted"
+  },
+  "23.5": {
+   "moon": "detriment",
+   "jupiter": "exalted"
+  },
+  "24.2": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "24.5": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "26.6": {
+   "moon": "detriment",
+   "sun": "exalted"
+  },
+  "27.2": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "27.6": {
+   "moon": "exalted",
+   "pluto": "detriment"
+  },
+  "30.6": {
+   "moon": "detriment",
+   "mars": "exalted"
+  },
+  "31.4": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "31.5": {
+   "moon": "detriment",
+   "pluto": "exalted"
+  },
+  "31.6": {
+   "moon": "detriment",
+   "sun": "exalted"
+  },
+  "32.5": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "34.5": {
+   "moon": "detriment",
+   "mars": "exalted"
+  },
+  "35.2": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "35.4": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "36.2": {
+   "moon": "detriment",
+   "neptune": "exalted"
+  },
+  "36.4": {
+   "moon": "detriment",
+   "pluto": "exalted"
+  },
+  "37.4": {
+   "moon": "exalted",
+   "saturn": "detriment"
+  },
+  "38.2": {
+   "moon": "detriment",
+   "pluto": "exalted"
+  },
+  "39.2": {
+   "moon": "exalted",
+   "jupiter": "detriment"
+  },
+  "39.4": {
+   "moon": "exalted",
+   "sun": "detriment"
+  },
+  "39.6": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "40.1": {
+   "moon": "detriment",
+   "sun": "exalted"
+  },
+  "40.2": {
+   "moon": "detriment",
+   "sun": "exalted"
+  },
+  "41.3": {
+   "moon": "detriment",
+   "saturn": "exalted"
+  },
+  "42.3": {
+   "moon": "detriment",
+   "mars": "exalted"
+  },
+  "42.4": {
+   "moon": "exalted",
+   "venus": "detriment"
+  },
+  "42.6": {
+   "moon": "exalted",
+   "saturn": "detriment"
+  },
+  "43.2": {
+   "moon": "detriment",
+   "pluto": "exalted"
+  },
+  "43.3": {
+   "moon": "detriment",
+   "pluto": "exalted"
+  },
+  "43.5": {
+   "moon": "exalted",
+   "venus": "detriment"
+  },
+  "46.3": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "46.5": {
+   "moon": "exalted",
+   "neptune": "detriment"
+  },
+  "47.4": {
+   "moon": "detriment",
+   "saturn": "exalted"
+  },
+  "48.1": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "48.3": {
+   "moon": "exalted",
+   "mercury": "detriment"
+  },
+  "48.5": {
+   "moon": "detriment",
+   "mars": "exalted"
+  },
+  "48.6": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "49.5": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "50.3": {
+   "moon": "exalted",
+   "mercury": "detriment"
+  },
+  "50.6": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "53.2": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "53.3": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "53.4": {
+   "moon": "exalted",
+   "venus": "detriment"
+  },
+  "53.6": {
+   "moon": "exalted",
+   "pluto": "detriment"
+  },
+  "55.6": {
+   "moon": "detriment",
+   "saturn": "exalted"
+  },
+  "56.1": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "56.2": {
+   "moon": "detriment",
+   "uranus": "exalted"
+  },
+  "56.4": {
+   "moon": "exalted",
+   "mercury": "detriment"
+  },
+  "57.1": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "57.2": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "57.5": {
+   "moon": "detriment",
+   "pluto": "exalted"
+  },
+  "58.1": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "58.5": {
+   "moon": "exalted",
+   "sun": "detriment"
+  },
+  "58.6": {
+   "moon": "exalted",
+   "mercury": "detriment"
+  },
+  "61.2": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "61.3": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "62.5": {
+   "moon": "exalted",
+   "neptune": "detriment"
+  },
+  "64.2": {
+   "moon": "detriment",
+   "venus": "exalted"
+  },
+  "64.3": {
+   "moon": "detriment",
+   "saturn": "exalted"
+  },
+  "64.4": {
+   "moon": "exalted",
+   "mars": "detriment"
+  },
+  "1.5": {
+   "uranus": "detriment",
+   "mars": "exalted"
+  },
+  "2.3": {
+   "uranus": "detriment",
+   "jupiter": "exalted"
+  },
+  "3.2": {
+   "uranus": "detriment",
+   "mars": "exalted"
+  },
+  "5.4": {
+   "uranus": "exalted",
+   "sun": "detriment"
+  },
+  "7.4": {
+   "uranus": "detriment",
+   "sun": "exalted"
+  },
+  "7.6": {
+   "uranus": "detriment",
+   "mercury": "exalted"
+  },
+  "10.4": {
+   "uranus": "exalted",
+   "mercury": "detriment"
+  },
+  "17.5": {
+   "uranus": "exalted",
+   "mars": "detriment"
+  },
+  "18.5": {
+   "uranus": "detriment",
+   "saturn": "exalted"
+  },
+  "20.5": {
+   "uranus": "detriment",
+   "saturn": "exalted"
+  },
+  "25.6": {
+   "uranus": "detriment",
+   "earth": "exalted"
+  },
+  "40.4": {
+   "uranus": "exalted",
+   "mars": "detriment"
+  },
+  "40.5": {
+   "uranus": "exalted",
+   "earth": "detriment"
+  },
+  "44.5": {
+   "uranus": "exalted",
+   "mars": "detriment"
+  },
+  "45.2": {
+   "uranus": "exalted",
+   "mars": "detriment"
+  },
+  "45.5": {
+   "uranus": "exalted",
+   "jupiter": "detriment"
+  },
+  "45.6": {
+   "uranus": "exalted",
+   "jupiter": "detriment"
+  },
+  "51.4": {
+   "uranus": "exalted",
+   "mercury": "detriment"
+  },
+  "55.5": {
+   "uranus": "exalted",
+   "sun": "detriment"
+  },
+  "56.5": {
+   "uranus": "exalted",
+   "mars": "detriment"
+  },
+  "57.6": {
+   "uranus": "exalted",
+   "mars": "detriment"
+  },
+  "58.2": {
+   "uranus": "detriment"
+  },
+  "58.3": {
+   "uranus": "exalted",
+   "mars": "detriment"
+  },
+  "59.2": {
+   "uranus": "exalted",
+   "pluto": "detriment"
+  },
+  "59.5": {
+   "uranus": "detriment",
+   "sun": "exalted"
+  },
+  "60.6": {
+   "uranus": "exalted",
+   "mercury": "detriment"
+  },
+  "62.3": {
+   "uranus": "exalted",
+   "venus": "detriment"
+  },
+  "63.2": {
+   "uranus": "detriment",
+   "jupiter": "exalted"
+  },
+  "1.2": {
+   "venus": "exalted",
+   "mars": "detriment"
+  },
+  "2.1": {
+   "venus": "exalted",
+   "mars": "detriment"
+  },
+  "2.4": {
+   "venus": "exalted",
+   "mars": "detriment"
+  },
+  "3.3": {
+   "venus": "exalted",
+   "pluto": "detriment"
+  },
+  "4.3": {
+   "venus": "exalted",
+   "pluto": "detriment"
+  },
+  "5.2": {
+   "venus": "exalted",
+   "pluto": "detriment"
+  },
+  "5.5": {
+   "venus": "exalted",
+   "pluto": "detriment"
+  },
+  "6.2": {
+   "venus": "exalted",
+   "mars": "detriment"
+  },
+  "6.6": {
+   "venus": "detriment",
+   "mercury": "exalted"
+  },
+  "7.1": {
+   "venus": "exalted",
+   "mercury": "detriment"
+  },
+  "7.5": {
+   "venus": "exalted",
+   "neptune": "detriment"
+  },
+  "8.6": {
+   "venus": "exalted",
+   "pluto": "detriment"
+  },
+  "11.3": {
+   "venus": "detriment",
+   "pluto": "exalted"
+  },
+  "12.1": {
+   "venus": "exalted",
+   "jupiter": "detriment"
+  },
+  "13.3": {
+   "venus": "detriment",
+   "earth": "exalted"
+  },
+  "13.4": {
+   "venus": "detriment",
+   "pluto": "exalted"
+  },
+  "14.5": {
+   "venus": "detriment",
+   "sun": "exalted"
+  },
+  "15.1": {
+   "venus": "exalted",
+   "mars": "detriment"
+  },
+  "15.6": {
+   "venus": "detriment",
+   "pluto": "exalted"
+  },
+  "17.1": {
+   "venus": "detriment",
+   "mars": "exalted"
+  },
+  "19.4": {
+   "venus": "detriment",
+   "mars": "exalted"
+  },
+  "20.6": {
+   "venus": "exalted",
+   "mercury": "detriment"
+  },
+  "21.6": {
+   "venus": "detriment",
+   "pluto": "exalted"
+  },
+  "24.3": {
+   "venus": "exalted",
+   "jupiter": "detriment"
+  },
+  "25.4": {
+   "venus": "exalted",
+   "jupiter": "exalted"
+  },
+  "25.5": {
+   "venus": "exalted",
+   "jupiter": "detriment"
+  },
+  "26.5": {
+   "venus": "detriment",
+   "mars": "exalted"
+  },
+  "28.1": {
+   "venus": "detriment",
+   "mars": "exalted"
+  },
+  "29.2": {
+   "venus": "detriment",
+   "sun": "exalted"
+  },
+  "29.4": {
+   "venus": "detriment",
+   "saturn": "exalted"
+  },
+  "32.2": {
+   "venus": "exalted",
+   "jupiter": "detriment"
+  },
+  "34.2": {
+   "venus": "detriment",
+   "mars": "exalted"
+  },
+  "35.1": {
+   "venus": "exalted",
+   "neptune": "detriment"
+  },
+  "37.1": {
+   "venus": "exalted"
+  },
+  "37.5": {
+   "venus": "exalted",
+   "mars": "detriment"
+  },
+  "37.6": {
+   "venus": "exalted",
+   "mercury": "detriment"
+  },
+  "41.4": {
+   "venus": "detriment",
+   "earth": "exalted"
+  },
+  "41.5": {
+   "venus": "detriment",
+   "mars": "exalted"
+  },
+  "42.1": {
+   "venus": "detriment",
+   "sun": "exalted"
+  },
+  "42.2": {
+   "venus": "detriment",
+   "sun": "exalted"
+  },
+  "42.5": {
+   "venus": "detriment",
+   "sun": "exalted"
+  },
+  "43.1": {
+   "venus": "detriment",
+   "pluto": "exalted"
+  },
+  "44.1": {
+   "venus": "detriment",
+   "pluto": "exalted"
+  },
+  "47.5": {
+   "venus": "exalted"
+  },
+  "48.2": {
+   "venus": "detriment",
+   "pluto": "exalted"
+  },
+  "50.1": {
+   "venus": "detriment",
+   "mars": "exalted"
+  },
+  "50.2": {
+   "venus": "detriment",
+   "sun": "exalted"
+  },
+  "51.1": {
+   "venus": "detriment",
+   "pluto": "exalted"
+  },
+  "52.2": {
+   "venus": "exalted",
+   "mars": "detriment"
+  },
+  "52.3": {
+   "venus": "detriment",
+   "saturn": "exalted"
+  },
+  "52.6": {
+   "venus": "exalted",
+   "neptune": "detriment"
+  },
+  "53.1": {
+   "venus": "detriment",
+   "neptune": "exalted"
+  },
+  "54.1": {
+   "venus": "detriment",
+   "pluto": "exalted"
+  },
+  "54.3": {
+   "venus": "detriment",
+   "pluto": "exalted"
+  },
+  "55.1": {
+   "venus": "detriment",
+   "jupiter": "exalted"
+  },
+  "55.2": {
+   "venus": "exalted",
+   "earth": "detriment"
+  },
+  "56.3": {
+   "venus": "detriment",
+   "sun": "exalted"
+  },
+  "57.4": {
+   "venus": "exalted",
+   "mars": "detriment"
+  },
+  "59.4": {
+   "venus": "exalted",
+   "mercury": "detriment"
+  },
+  "59.6": {
+   "venus": "exalted",
+   "mercury": "detriment"
+  },
+  "60.1": {
+   "venus": "exalted",
+   "mercury": "detriment"
+  },
+  "60.4": {
+   "venus": "detriment",
+   "mercury": "exalted"
+  },
+  "61.1": {
+   "venus": "detriment",
+   "neptune": "exalted"
+  },
+  "62.4": {
+   "venus": "exalted",
+   "pluto": "detriment"
+  },
+  "64.1": {
+   "venus": "exalted",
+   "mars": "detriment"
+  },
+  "64.5": {
+   "venus": "exalted",
+   "jupiter": "detriment"
+  },
+  "64.6": {
+   "venus": "detriment",
+   "mercury": "exalted"
+  },
+  "1.3": {
+   "mars": "exalted",
+   "earth": "detriment"
+  },
+  "2.2": {
+   "mars": "detriment",
+   "saturn": "exalted"
+  },
+  "3.4": {
+   "mars": "detriment",
+   "neptune": "exalted"
+  },
+  "3.5": {
+   "mars": "exalted",
+   "earth": "detriment"
+  },
+  "4.6": {
+   "mars": "detriment",
+   "mercury": "exalted"
+  },
+  "5.1": {
+   "mars": "exalted",
+   "earth": "detriment"
+  },
+  "9.1": {
+   "mars": "detriment",
+   "pluto": "exalted"
+  },
+  "10.2": {
+   "mars": "detriment",
+   "mercury": "exalted"
+  },
+  "10.5": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "11.2": {
+   "mars": "detriment",
+   "neptune": "exalted"
+  },
+  "12.3": {
+   "mars": "detriment",
+   "neptune": "exalted"
+  },
+  "12.5": {
+   "mars": "detriment",
+   "sun": "exalted"
+  },
+  "13.6": {
+   "mars": "exalted",
+   "mercury": "detriment"
+  },
+  "14.2": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "16.4": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "19.6": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "21.2": {
+   "mars": "exalted",
+   "neptune": "detriment"
+  },
+  "22.3": {
+   "mars": "detriment",
+   "saturn": "exalted"
+  },
+  "22.4": {
+   "mars": "detriment",
+   "neptune": "exalted"
+  },
+  "22.5": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "22.6": {
+   "mars": "detriment",
+   "sun": "exalted"
+  },
+  "23.1": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "23.6": {
+   "mars": "exalted",
+   "jupiter": "detriment"
+  },
+  "25.2": {
+   "mars": "detriment",
+   "mercury": "exalted"
+  },
+  "25.3": {
+   "mars": "exalted",
+   "pluto": "detriment"
+  },
+  "26.1": {
+   "mars": "detriment",
+   "neptune": "exalted"
+  },
+  "27.3": {
+   "mars": "detriment",
+   "pluto": "exalted"
+  },
+  "27.4": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "29.1": {
+   "mars": "exalted",
+   "neptune": "detriment"
+  },
+  "29.3": {
+   "mars": "exalted",
+   "jupiter": "detriment"
+  },
+  "29.6": {
+   "mars": "exalted",
+   "jupiter": "detriment"
+  },
+  "30.2": {
+   "mars": "detriment",
+   "sun": "exalted"
+  },
+  "32.1": {
+   "mars": "detriment",
+   "sun": "exalted"
+  },
+  "33.1": {
+   "mars": "detriment",
+   "sun": "exalted"
+  },
+  "33.3": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "34.4": {
+   "mars": "detriment",
+   "pluto": "exalted"
+  },
+  "35.6": {
+   "mars": "detriment",
+   "saturn": "exalted"
+  },
+  "36.1": {
+   "mars": "exalted",
+   "jupiter": "detriment"
+  },
+  "37.3": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "38.1": {
+   "mars": "detriment",
+   "neptune": "exalted"
+  },
+  "38.4": {
+   "mars": "detriment",
+   "pluto": "exalted"
+  },
+  "39.1": {
+   "mars": "exalted",
+   "mercury": "detriment"
+  },
+  "39.5": {
+   "mars": "detriment",
+   "neptune": "exalted"
+  },
+  "40.3": {
+   "mars": "detriment",
+   "pluto": "exalted"
+  },
+  "41.2": {
+   "mars": "detriment",
+   "saturn": "exalted"
+  },
+  "43.6": {
+   "mars": "detriment",
+   "sun": "exalted"
+  },
+  "44.2": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "44.3": {
+   "mars": "exalted",
+   "neptune": "detriment"
+  },
+  "45.1": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "45.3": {
+   "mars": "detriment",
+   "neptune": "exalted"
+  },
+  "45.4": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "46.2": {
+   "mars": "detriment",
+   "sun": "exalted"
+  },
+  "47.3": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "49.4": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "50.4": {
+   "mars": "detriment",
+   "saturn": "exalted"
+  },
+  "50.5": {
+   "mars": "detriment",
+   "saturn": "exalted"
+  },
+  "51.2": {
+   "mars": "exalted",
+   "mercury": "detriment"
+  },
+  "51.5": {
+   "mars": "detriment",
+   "sun": "exalted"
+  },
+  "52.1": {
+   "mars": "detriment",
+   "earth": "exalted"
+  },
+  "54.2": {
+   "mars": "detriment",
+   "saturn": "exalted"
+  },
+  "55.3": {
+   "mars": "detriment",
+   "saturn": "exalted"
+  },
+  "55.4": {
+   "mars": "detriment",
+   "jupiter": "exalted"
+  },
+  "59.3": {
+   "mars": "detriment",
+   "saturn": "exalted"
+  },
+  "60.3": {
+   "mars": "detriment",
+   "saturn": "exalted"
+  },
+  "61.5": {
+   "mars": "detriment",
+   "saturn": "exalted"
+  },
+  "61.6": {
+   "mars": "detriment",
+   "pluto": "exalted"
+  },
+  "62.1": {
+   "mars": "detriment",
+   "neptune": "exalted"
+  },
+  "63.1": {
+   "mars": "detriment",
+   "sun": "exalted"
+  },
+  "63.4": {
+   "mars": "detriment",
+   "mercury": "exalted"
+  },
+  "63.5": {
+   "mars": "detriment",
+   "sun": "exalted"
+  },
+  "1.4": {
+   "earth": "exalted",
+   "jupiter": "detriment"
+  },
+  "1.6": {
+   "earth": "exalted",
+   "pluto": "detriment"
+  },
+  "2.5": {
+   "earth": "detriment",
+   "mercury": "exalted"
+  },
+  "3.1": {
+   "earth": "exalted",
+   "mercury": "detriment"
+  },
+  "8.2": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "9.3": {
+   "earth": "exalted",
+   "sun": "detriment"
+  },
+  "9.5": {
+   "earth": "detriment",
+   "jupiter": "exalted"
+  },
+  "12.4": {
+   "earth": "exalted",
+   "mercury": "detriment"
+  },
+  "12.6": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "14.3": {
+   "earth": "exalted",
+   "neptune": "detriment"
+  },
+  "14.6": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "15.2": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "15.3": {
+   "earth": "exalted",
+   "mercury": "detriment"
+  },
+  "16.1": {
+   "earth": "exalted",
+   "mercury": "detriment"
+  },
+  "17.3": {
+   "earth": "detriment",
+   "pluto": "exalted"
+  },
+  "18.1": {
+   "earth": "exalted",
+   "jupiter": "detriment"
+  },
+  "18.4": {
+   "earth": "exalted",
+   "mercury": "detriment"
+  },
+  "19.5": {
+   "earth": "exalted",
+   "jupiter": "detriment"
+  },
+  "20.3": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "21.4": {
+   "earth": "detriment",
+   "jupiter": "exalted"
+  },
+  "23.4": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "27.1": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "29.5": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "31.1": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "34.6": {
+   "earth": "exalted",
+   "jupiter": "detriment"
+  },
+  "38.3": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "38.6": {
+   "earth": "detriment",
+   "saturn": "exalted"
+  },
+  "39.3": {
+   "earth": "detriment",
+   "jupiter": "exalted"
+  },
+  "40.6": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "44.6": {
+   "earth": "detriment",
+   "pluto": "exalted"
+  },
+  "46.4": {
+   "earth": "exalted",
+   "pluto": "detriment"
+  },
+  "48.4": {
+   "earth": "detriment",
+   "sun": "exalted"
+  },
+  "49.2": {
+   "earth": "exalted",
+   "pluto": "detriment"
+  },
+  "52.5": {
+   "earth": "exalted",
+   "pluto": "detriment"
+  },
+  "53.5": {
+   "earth": "detriment",
+   "neptune": "exalted"
+  },
+  "60.2": {
+   "earth": "detriment",
+   "saturn": "exalted"
+  },
+  "4.5": {
+   "jupiter": "exalted",
+   "pluto": "detriment"
+  },
+  "8.4": {
+   "jupiter": "exalted",
+   "mercury": "detriment"
+  },
+  "8.5": {
+   "jupiter": "exalted",
+   "sun": "detriment"
+  },
+  "9.2": {
+   "jupiter": "detriment",
+   "pluto": "exalted"
+  },
+  "11.6": {
+   "jupiter": "detriment",
+   "neptune": "exalted"
+  },
+  "13.5": {
+   "jupiter": "detriment",
+   "neptune": "exalted"
+  },
+  "14.1": {
+   "jupiter": "exalted",
+   "mercury": "detriment"
+  },
+  "15.4": {
+   "jupiter": "exalted",
+   "saturn": "detriment"
+  },
+  "15.5": {
+   "jupiter": "exalted",
+   "pluto": "detriment"
+  },
+  "16.6": {
+   "jupiter": "detriment",
+   "neptune": "exalted"
+  },
+  "17.4": {
+   "jupiter": "detriment",
+   "pluto": "exalted"
+  },
+  "18.3": {
+   "jupiter": "detriment",
+   "neptune": "exalted"
+  },
+  "19.2": {
+   "jupiter": "exalted",
+   "mercury": "detriment"
+  },
+  "20.4": {
+   "jupiter": "exalted",
+   "mercury": "detriment"
+  },
+  "21.3": {
+   "jupiter": "detriment",
+   "neptune": "exalted"
+  },
+  "21.5": {
+   "jupiter": "exalted",
+   "pluto": "detriment"
+  },
+  "22.2": {
+   "jupiter": "detriment",
+   "sun": "exalted"
+  },
+  "24.6": {
+   "jupiter": "exalted",
+   "pluto": "detriment"
+  },
+  "27.5": {
+   "jupiter": "exalted",
+   "saturn": "detriment"
+  },
+  "28.2": {
+   "jupiter": "detriment",
+   "sun": "exalted"
+  },
+  "28.3": {
+   "jupiter": "detriment",
+   "saturn": "exalted"
+  },
+  "28.4": {
+   "jupiter": "exalted",
+   "mercury": "detriment"
+  },
+  "30.1": {
+   "jupiter": "detriment",
+   "sun": "exalted"
+  },
+  "30.3": {
+   "jupiter": "detriment",
+   "pluto": "exalted"
+  },
+  "30.4": {
+   "jupiter": "detriment",
+   "pluto": "exalted"
+  },
+  "30.5": {
+   "jupiter": "exalted",
+   "pluto": "detriment"
+  },
+  "31.2": {
+   "jupiter": "exalted",
+   "mercury": "detriment"
+  },
+  "31.3": {
+   "jupiter": "detriment",
+   "sun": "exalted"
+  },
+  "32.3": {
+   "jupiter": "detriment",
+   "mercury": "exalted"
+  },
+  "32.4": {
+   "jupiter": "exalted",
+   "saturn": "detriment"
+  },
+  "33.2": {
+   "jupiter": "exalted",
+   "neptune": "detriment"
+  },
+  "33.5": {
+   "jupiter": "detriment",
+   "pluto": "exalted"
+  },
+  "33.6": {
+   "jupiter": "detriment",
+   "sun": "exalted"
+  },
+  "35.3": {
+   "jupiter": "exalted",
+   "sun": "detriment"
+  },
+  "35.5": {
+   "jupiter": "detriment",
+   "mercury": "exalted"
+  },
+  "36.3": {
+   "jupiter": "detriment",
+   "pluto": "exalted"
+  },
+  "36.6": {
+   "jupiter": "exalted",
+   "saturn": "detriment"
+  },
+  "37.2": {
+   "jupiter": "exalted",
+   "mercury": "detriment"
+  },
+  "43.4": {
+   "jupiter": "detriment",
+   "mercury": "exalted"
+  },
+  "46.1": {
+   "jupiter": "detriment",
+   "neptune": "exalted"
+  },
+  "49.1": {
+   "jupiter": "exalted",
+   "sun": "detriment"
+  },
+  "51.3": {
+   "jupiter": "detriment",
+   "sun": "exalted"
+  },
+  "52.4": {
+   "jupiter": "detriment",
+   "saturn": "exalted"
+  },
+  "54.6": {
+   "jupiter": "detriment",
+   "saturn": "exalted"
+  },
+  "60.5": {
+   "jupiter": "detriment",
+   "neptune": "exalted"
+  },
+  "61.4": {
+   "jupiter": "detriment",
+   "saturn": "exalted"
+  },
+  "63.3": {
+   "jupiter": "exalted",
+   "saturn": "detriment"
+  },
+  "63.6": {
+   "jupiter": "exalted",
+   "pluto": "detriment"
+  },
+  "3.6": {
+   "pluto": "detriment",
+   "sun": "exalted"
+  },
+  "6.1": {
+   "pluto": "exalted",
+   "mercury": "detriment"
+  },
+  "6.3": {
+   "pluto": "detriment",
+   "neptune": "exalted"
+  },
+  "6.4": {
+   "pluto": "detriment",
+   "sun": "exalted"
+  },
+  "10.6": {
+   "pluto": "exalted",
+   "saturn": "detriment"
+  },
+  "23.3": {
+   "pluto": "detriment",
+   "sun": "exalted"
+  },
+  "26.2": {
+   "pluto": "detriment",
+   "sun": "exalted"
+  },
+  "26.4": {
+   "pluto": "exalted",
+   "saturn": "detriment"
+  },
+  "28.5": {
+   "pluto": "exalted",
+   "sun": "detriment"
+  },
+  "28.6": {
+   "pluto": "exalted",
+   "neptune": "detriment"
+  },
+  "32.6": {
+   "pluto": "exalted",
+   "neptune": "detriment"
+  },
+  "33.4": {
+   "pluto": "exalted",
+   "neptune": "detriment"
+  },
+  "34.1": {
+   "pluto": "detriment",
+   "saturn": "exalted"
+  },
+  "36.5": {
+   "pluto": "exalted",
+   "mercury": "detriment"
+  },
+  "38.5": {
+   "pluto": "detriment",
+   "saturn": "exalted"
+  },
+  "41.6": {
+   "pluto": "detriment",
+   "saturn": "exalted"
+  },
+  "44.4": {
+   "pluto": "exalted",
+   "sun": "detriment"
+  },
+  "49.3": {
+   "pluto": "detriment",
+   "neptune": "exalted"
+  },
+  "51.6": {
+   "pluto": "detriment",
+   "sun": "exalted"
+  },
+  "56.6": {
+   "pluto": "detriment",
+   "sun": "exalted"
+  },
+  "58.4": {
+   "pluto": "exalted",
+   "neptune": "detriment"
+  },
+  "2.6": {
+   "saturn": "detriment",
+   "mercury": "exalted"
+  },
+  "4.4": {
+   "saturn": "detriment",
+   "sun": "exalted"
+  },
+  "12.2": {
+   "saturn": "exalted",
+   "mercury": "detriment"
+  },
+  "24.4": {
+   "saturn": "exalted",
+   "neptune": "detriment"
+  },
+  "26.3": {
+   "saturn": "detriment",
+   "sun": "exalted"
+  },
+  "34.3": {
+   "saturn": "exalted",
+   "mercury": "detriment"
+  },
+  "46.6": {
+   "saturn": "exalted",
+   "neptune": "detriment"
+  },
+  "47.1": {
+   "saturn": "exalted",
+   "neptune": "detriment"
+  },
+  "47.2": {
+   "saturn": "exalted",
+   "mercury": "detriment"
+  },
+  "49.6": {
+   "saturn": "detriment",
+   "neptune": "exalted"
+  },
+  "62.2": {
+   "saturn": "exalted",
+   "mercury": "detriment"
+  },
+  "62.6": {
+   "saturn": "exalted",
+   "mercury": "detriment"
+  },
+  "7.2": {
+   "mercury": "detriment",
+   "neptune": "exalted"
+  },
+  "8.1": {
+   "mercury": "detriment",
+   "neptune": "exalted"
+  },
+  "16.2": {
+   "mercury": "detriment",
+   "sun": "exalted"
+  },
+  "25.1": {
+   "mercury": "detriment",
+   "neptune": "exalted"
+  },
+  "41.1": {
+   "mercury": "detriment",
+   "neptune": "exalted"
+  },
+  "57.3": {
+   "mercury": "exalted"
+  },
+  "59.1": {
+   "mercury": "detriment",
+   "sun": "exalted"
+  },
+  "5.6": {
+   "neptune": "exalted"
+  },
+  "24.1": {
+   "neptune": "detriment",
+   "sun": "exalted"
+  },
+  "47.6": {
+   "sun": "detriment"
+  },
+  "54.5": {
+   "sun": "exalted"
+  }
+ }
+}
