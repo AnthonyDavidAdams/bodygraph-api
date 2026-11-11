@@ -81,6 +81,8 @@ def test_svg_and_png():
             assert "No scientific evidence" in body
             import xml.dom.minidom
             xml.dom.minidom.parseString(body)
+    plain = client.get("/v1/chart.svg", params={**q, "figure": "false"}).text
+    assert len(plain) < len(client.get("/v1/chart.svg", params=q).text)
     r = client.get("/v1/chart.png", params={**q, "scale": 1})
     assert r.status_code == 200 and r.content[:8] == b"\x89PNG\r\n\x1a\n"
 

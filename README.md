@@ -78,6 +78,7 @@ curl "localhost:8000/v1/chart.png?utc=1948-04-09T05:14:00Z&theme=dark&scale=2" -
 | `theme` | `light`, `dark` | `light` |
 | `layout` | `full`, `graph` | `full` |
 | `center_colors` | `traditional`, `mono` | `traditional` |
+| `figure` | `true`, `false` | `true` |
 | `background` | `true`, `false` | `true` |
 | `disclaimer` | `true`, `false` | `true` |
 | `scale` (PNG) | 0.5 to 4 | 2 |
