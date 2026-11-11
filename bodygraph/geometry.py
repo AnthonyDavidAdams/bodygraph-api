@@ -178,14 +178,15 @@ _link(30, 41, _SOL_DN, 78, RIGHT, 122)
 
 # ---- Integration group -----------------------------------------------------
 # One spine from gate 20 (Throat) to gate 57 (Spleen). Gate 10 joins it from
-# the G center along the spine's tangent. Gate 34 rises to it from the Sacral.
+# the G center and flows down toward 57. Gate 34 rises from the Sacral and
+# flows up toward 20. Both merge along the spine's tangent, with no corner.
 SPINE = _curve(G[20], G[57], LEFT, 118, _SPL_UP, 108)
-T10, T34 = 0.66, 0.84
+T10, T34 = 0.66, 0.82
 TMID = (T10 + T34) / 2
 J10, J34 = bezier(SPINE, T10), bezier(SPINE, T34)
 _t10, _t34 = bezier_tangent(SPINE, T10), bezier_tangent(SPINE, T34)
-ARM10 = _curve(G[10], J10, LEFT, 78, (-_t10[0], -_t10[1]), 40)
-ARM34 = _curve(G[34], J34, LEFT, 76, (0.80, 0.60), 54)
+ARM10 = _curve(G[10], J10, LEFT, 78, (-_t10[0], -_t10[1]), 26)
+ARM34 = _curve(G[34], J34, LEFT, 104, _t34, 30)
 
 # arm of each gate as (curve, t from, t to), starting at the gate
 INTEGRATION_ARMS = {
