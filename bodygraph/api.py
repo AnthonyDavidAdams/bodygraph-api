@@ -34,8 +34,8 @@ agrees with Swiss Ephemeris within a tenth of an arcsecond.
 """
 
 app = FastAPI(title="Bodygraph API", version=__version__, description=DESCRIPTION,
-              license_info={"name": "CC BY-NC-SA 4.0",
-                            "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"})
+              license_info={"name": "MIT",
+                            "url": "https://opensource.org/license/mit"})
 app.add_middleware(GZipMiddleware, minimum_size=1024)
 app.add_middleware(
     CORSMiddleware,

@@ -10,7 +10,7 @@ It gives the NASA JPL engine a second opinion. The test suite compares the two w
 
 ## Before you deploy with it
 
-A public service that runs this engine falls under Swiss Ephemeris licensing. The AGPL does not permit a non-commercial restriction, so it conflicts with the Bodygraph API's own license. Buy the Swiss Ephemeris Professional License first, or keep this engine for private checks.
+A public service that runs this engine falls under Swiss Ephemeris licensing. The AGPL's terms then apply to the whole running service, on top of the Bodygraph API's MIT license. Buy the Swiss Ephemeris Professional License first, or keep this engine for private checks.
 
 ## Use
 

@@ -2,21 +2,9 @@
 
 Bug reports, reference charts and pull requests are welcome.
 
-## Before your first pull request
+## License of contributions
 
-The project is published under CC BY-NC-SA 4.0. The maintainer also needs the right to offer the work under other terms, such as a hosted paid tier or a commercial license. A contribution under the public license alone would block that.
-
-So every contributor agrees to the grant below. State your agreement in the pull request with this line:
-
-> I have read CONTRIBUTING.md and I agree to the contributor grant.
-
-## Contributor grant
-
-You keep the copyright in your contribution.
-
-You grant Anthony David Adams, and anyone he authorizes, a perpetual, worldwide, non-exclusive, royalty-free, irrevocable license to use, copy, modify, publish, distribute and sublicense your contribution, in this project or elsewhere, under any license terms, commercial ones included.
-
-You confirm that you wrote the contribution or have the right to submit it, and that it carries no terms that conflict with this grant.
+The project is MIT licensed. By opening a pull request you agree that your contribution is released under the same license.
 
 ## What a good change includes
 

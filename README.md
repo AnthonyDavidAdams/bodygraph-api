@@ -149,8 +149,6 @@ Built by Anthony David Adams at the EarthPilot.ai Lab. If you build with AI, joi
 
 ## License
 
-[CC BY-NC-SA 4.0](LICENSE). Use it, copy it and adapt it for non-commercial purposes. Give credit. Share adaptations under the same license. Commercial use needs written permission from the copyright holder.
+[MIT](LICENSE). Use it for anything, commercial work included. Keep the copyright notice.
 
-The planetary data is a NASA work with no license condition. Every runtime dependency carries a permissive license. See [NOTICE](NOTICE) for credits and [CONTRIBUTING.md](CONTRIBUTING.md) for the contributor grant.
-
-Creative Commons wrote its licenses for creative works and does not recommend them for software. They still apply to code. Ask a lawyer whether a software-specific license fits your plans better before you rely on this one in a dispute.
+The planetary data is a NASA work with no license condition. Every runtime dependency carries a permissive license. See [NOTICE](NOTICE) for credits and [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute. The optional Swiss Ephemeris add-on in `contrib/` is not covered: it is AGPL.

@@ -8,7 +8,7 @@ version = "1.1.0"
 description = "Human Design chart engine and bodygraph renderer on NASA JPL DE440"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "CC-BY-NC-SA-4.0" }
+license = { text = "MIT" }
 authors = [{ name = "Anthony Adams, EarthPilot.ai Lab" }]
 dependencies = [
   "naif-de440>=2020.12.21", "jplephem>=2.20", "pyerfa>=2.0", "numpy>=1.26",

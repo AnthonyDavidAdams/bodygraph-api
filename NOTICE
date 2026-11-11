@@ -1,13 +1,7 @@
 Bodygraph API
 Copyright (c) 2026 Anthony David Adams
 
-Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-International (CC BY-NC-SA 4.0). See LICENSE.
-
-  You may use, copy and adapt this work for non-commercial purposes.
-  You must give credit and link to the license.
-  You must share adaptations under the same license.
-  Commercial use needs written permission from the copyright holder.
+Licensed under the MIT License. See LICENSE.
 
 Planetary data: NASA Jet Propulsion Laboratory Development Ephemeris DE440
 (Park, Folkner, Williams and Boggs, 2021), a work of the United States
