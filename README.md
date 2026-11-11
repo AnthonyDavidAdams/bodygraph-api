@@ -1,5 +1,7 @@
 # Bodygraph API
 
+**by [EarthPilot](https://earthpilot.ai)** · built in the open at the [Singularity Playground](https://earthpilot.ai/playground), a free weekly workshop for people building with AI. Come build with us.
+
 A free Human Design chart engine and bodygraph renderer. It returns the full chart as JSON and draws it as SVG or PNG.
 
 > **No scientific evidence shows that Human Design describes personality, predicts behavior or outcomes, or helps with decisions.** The planetary positions in a chart are astronomically accurate. The meanings attached to them are not supported by evidence. Every JSON response and every rendered chart carries this notice.
@@ -131,6 +133,19 @@ The Swiss Ephemeris cross-check runs when `pyswisseph` is installed and is skipp
 | `HD_ENGINE` | `jpl`, or `package.module:ClassName` | `jpl` |
 | `CORS_ORIGINS` | Comma-separated origins | `*` |
 | `WEB_CONCURRENCY` | Worker processes | 2 |
+
+## Install as a package
+
+```bash
+pip install "git+https://github.com/AnthonyDavidAdams/bodygraph-api"          # library only
+pip install "bodygraph[api] @ git+https://github.com/AnthonyDavidAdams/bodygraph-api"  # plus the web service
+```
+
+It draws the bodygraphs on [Personality Bench](https://persona.earthpilot.ai), where every AI model gets a chart from its release date as a novelty.
+
+## About
+
+Built by Anthony David Adams at the EarthPilot.ai Lab. If you build with AI, join us at the [Singularity Playground](https://earthpilot.ai/playground).
 
 ## License
 

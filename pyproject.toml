@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bodygraph"
+version = "1.1.0"
+description = "Human Design chart engine and bodygraph renderer on NASA JPL DE440"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "CC-BY-NC-SA-4.0" }
+authors = [{ name = "Anthony Adams, EarthPilot.ai Lab" }]
+dependencies = [
+  "naif-de440>=2020.12.21", "jplephem>=2.20", "pyerfa>=2.0", "numpy>=1.26",
+  "tzdata>=2025.1", "timezonefinder>=6.5", "geonamescache>=2.0",
+  "fonttools>=4.50", "uharfbuzz>=0.39", "cairosvg>=2.7",
+]
+
+[project.optional-dependencies]
+api = ["fastapi>=0.115", "uvicorn[standard]>=0.30", "pydantic>=2.6"]
+
+[project.urls]
+Homepage = "https://github.com/AnthonyDavidAdams/bodygraph-api"
+Playground = "https://earthpilot.ai/playground"
+
+[tool.setuptools]
+packages = ["bodygraph"]
+
+[tool.setuptools.package-data]
+bodygraph = ["tables.json", "fonts/*"]
