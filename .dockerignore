@@ -1,6 +1,8 @@
 out
 tests
 tools
+contrib
+examples
 .git
 __pycache__
 .pytest_cache

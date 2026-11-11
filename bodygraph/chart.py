@@ -4,6 +4,7 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 
 from . import data as D
+from . import timescale
 from .ephemeris import BODIES, Position, get_engine, solve_solar_arc
 from .wheel import (GATE_INDEX, LINE_DEG, activation, boundary_distance, gate_span,
                     zodiac)
@@ -15,36 +16,16 @@ SCHEMA_VERSION = "1.0"
 # time
 # --------------------------------------------------------------------------
 def _utc_to_tt(engine, utc: datetime) -> float:
-    utc = utc.astimezone(timezone.utc)
-    sec = utc.second + utc.microsecond / 1e6
-    if hasattr(engine, "utc_to_tt"):
-        return engine.utc_to_tt(utc.year, utc.month, utc.day, utc.hour, utc.minute, sec)
-    return _time_engine().utc_to_tt(utc.year, utc.month, utc.day, utc.hour, utc.minute, sec)
+    return timescale.utc_to_tt(utc)
 
 
 def _tt_to_utc(engine, jd_tt: float) -> datetime:
-    eng = engine if hasattr(engine, "tt_to_utc") else _time_engine()
-    y, mo, d, h, mi, s = eng.tt_to_utc(jd_tt)
-    whole = int(s)
-    micro = int(round((s - whole) * 1e6))
-    base = datetime(y, mo, d, h, mi, min(whole, 59), tzinfo=timezone.utc)
-    return base + timedelta(seconds=whole - min(whole, 59), microseconds=micro)
-
-
-_TIME = None
-
-
-def _time_engine():
-    """Leap-second aware UTC/TT conversion, shared by every engine."""
-    global _TIME
-    if _TIME is None:
-        from .ephemeris import SwissEngine
-
-        _TIME = SwissEngine(allow_moshier=True)
-    return _TIME
+    return timescale.tt_to_utc(jd_tt)
 
 
 def _iso(dt: datetime) -> str:
+    if dt.microsecond >= 500000:
+        dt += timedelta(seconds=1)
     return dt.strftime("%Y-%m-%dT%H:%M:%S") + "Z"
 
 
@@ -320,6 +301,7 @@ def build_chart(utc: datetime, *, engine=None, node: str = "true",
             "engine": engine.name, "ephemeris": engine.source,
             "node": node, "design_arc_degrees": design_arc,
             "zodiac": "tropical", "frame": "geocentric apparent, true equinox of date",
+            "tt_minus_utc_seconds": round(timescale.tt_minus_utc_seconds(utc), 3),
             "wheel_start": "Gate 41 at 2°00' Aquarius (302°)",
         },
         "disclaimer": D.DISCLAIMER,

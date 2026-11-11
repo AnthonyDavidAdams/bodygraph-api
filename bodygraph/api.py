@@ -22,19 +22,20 @@ from .ephemeris import EphemerisError, get_engine
 from .wheel import GATE_ORDER, gate_span, zodiac
 
 DESCRIPTION = f"""
-Free, open Human Design chart calculation and bodygraph rendering.
+Free Human Design chart calculation and bodygraph rendering.
 
-**Accuracy.** Positions come from Swiss Ephemeris reading JPL-derived data
-files, cross-checked against an independent reduction of NASA JPL ephemerides.
-The Design moment is solved to the exact 88 degrees of solar arc. The service
-reproduces all 104 activations of four published Jovian Archive reference
-charts.
+**Accuracy.** Positions come straight from NASA JPL planetary ephemerides
+(DE440 by default) with IAU 2006/2000A precession and nutation. The Design
+moment is solved to the exact 88 degrees of solar arc. The service reproduces
+all 104 activations of four published Jovian Archive reference charts and
+agrees with Swiss Ephemeris within a tenth of an arcsecond.
 
 **What it does not claim.** {D.DISCLAIMER}
 """
 
 app = FastAPI(title="Bodygraph API", version=__version__, description=DESCRIPTION,
-              license_info={"name": "AGPL-3.0-or-later"})
+              license_info={"name": "CC BY-NC-SA 4.0",
+                            "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"})
 app.add_middleware(GZipMiddleware, minimum_size=1024)
 app.add_middleware(
     CORSMiddleware,
@@ -42,7 +43,21 @@ app.add_middleware(
     allow_methods=["GET", "POST"], allow_headers=["*"],
 )
 
-MIN_YEAR, MAX_YEAR = 1583, 2999
+
+
+def _years() -> tuple[int, int]:
+    """Years the loaded data file covers. 1583 is the first full Gregorian year."""
+    engine = get_engine()
+    lo, hi = engine.year_range() if hasattr(engine, "year_range") else (1583, 2999)
+    return max(lo, 1583), hi
+
+
+def _check_year(year: int) -> None:
+    lo, hi = _years()
+    if not lo <= year <= hi:
+        raise HTTPException(422, f"Supported years are {lo} to {hi} with the loaded "
+                                 "ephemeris file")
+
 SVG = "image/svg+xml"
 CACHE = "public, max-age=86400"
 
@@ -134,8 +149,7 @@ def resolve_birth(b: Birth) -> tuple[timeutil.ResolvedTime, dict]:
                              latitude=lat, longitude=lon, fold=b.fold)
     except timeutil.BirthTimeError as exc:
         raise HTTPException(422, str(exc))
-    if not MIN_YEAR <= r.utc.year <= MAX_YEAR:
-        raise HTTPException(422, f"Supported years are {MIN_YEAR} to {MAX_YEAR}")
+    _check_year(r.utc.year)
     if time_unknown:
         warnings.append({
             "code": "birth_time_unknown",
@@ -307,15 +321,21 @@ def _transit_time(at: Optional[datetime]) -> datetime:
     at = at or datetime.now(timezone.utc)
     if at.tzinfo is None:
         at = at.replace(tzinfo=timezone.utc)
-    if not MIN_YEAR <= at.year <= MAX_YEAR:
-        raise HTTPException(422, f"Supported years are {MIN_YEAR} to {MAX_YEAR}")
+    _check_year(at.year)
     return at.replace(microsecond=0)
+
+
+def _sky(at: Optional[datetime], node: str) -> dict:
+    try:
+        return C.transit_chart(_transit_time(at), node=node)
+    except EphemerisError as exc:
+        raise HTTPException(422, str(exc))
 
 
 @app.get("/v1/transit", tags=["transit"], summary="Gate activations of the sky at one moment")
 def transit(at: Optional[datetime] = Query(None, description="ISO 8601 instant. Default: now"),
             node: Node = "true"):
-    return C.transit_chart(_transit_time(at), node=node)
+    return _sky(at, node)
 
 
 @app.get("/v1/transit/overlay", tags=["transit"],
@@ -324,7 +344,7 @@ def transit_overlay(b: Birth = Depends(birth_query),
                     at: Optional[datetime] = Query(None), node: Node = "true"):
     r, info = resolve_birth(b)
     natal = _chart(r.utc, node)
-    sky = C.transit_chart(_transit_time(at), node=node)
+    sky = _sky(at, node)
     return {"input": info, "warnings": r.warnings, "transit": sky,
             **C.transit_overlay(natal, sky), "natal": C.summary_key(natal),
             "disclaimer": D.DISCLAIMER}
@@ -336,7 +356,7 @@ def transit_overlay_svg(b: Birth = Depends(birth_query), at: Optional[datetime] 
                         node: Node = "true", theme: Theme = "light", disclaimer: bool = True):
     r, _ = resolve_birth(b)
     natal = _chart(r.utc, node)
-    sky = C.transit_chart(_transit_time(at), node=node)
+    sky = _sky(at, node)
     body = render.render_transit_svg(natal, sky, C.transit_overlay(natal, sky), name=b.name,
                                      theme=theme, disclaimer=disclaimer)
     return Response(body, media_type=SVG, headers={"Cache-Control": "no-store"})
@@ -372,7 +392,9 @@ def reference():
 @app.get("/health", include_in_schema=False)
 def health():
     e = get_engine()
-    return {"status": "ok", "version": __version__, "engine": e.name, "ephemeris": e.source}
+    lo, hi = _years()
+    return {"status": "ok", "version": __version__, "engine": e.name, "ephemeris": e.source,
+            "years": [lo, hi]}
 
 
 @app.get("/", include_in_schema=False, response_class=HTMLResponse)

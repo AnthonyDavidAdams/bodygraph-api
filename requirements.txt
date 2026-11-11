@@ -2,8 +2,11 @@
 fastapi>=0.115
 uvicorn[standard]>=0.30
 pydantic>=2.6
-# astronomy
-pyswisseph>=2.10.3.2
+# astronomy: NASA JPL DE440 data, file reader, IAU precession and nutation
+naif-de440>=2020.12.21
+jplephem>=2.20
+pyerfa>=2.0
+numpy>=1.26
 # time zones and places
 tzdata>=2025.1
 timezonefinder>=6.5

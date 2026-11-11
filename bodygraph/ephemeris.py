@@ -1,35 +1,45 @@
-"""Planetary positions.
+"""Planetary positions from NASA JPL Development Ephemerides.
 
-Two engines sit behind one interface.
+The engine reads a JPL ephemeris file and reduces it to what an observer at
+the Earth's center sees: apparent, geocentric, tropical longitude on the true
+equinox of date.
 
-``SwissEngine``  Swiss Ephemeris reading its compressed JPL files (SE1). This
-                 is the reference engine. It refuses to run if the data files
-                 are missing, because the library would otherwise fall back to
-                 the lower-precision Moshier theory without telling anyone.
+Steps for each body:
+  1. Barycentric position and velocity from the JPL polynomials.
+  2. Light time: where the body was when the light now arriving left it.
+  3. Gravitational deflection of that light by the Sun.
+  4. Annual aberration from the Earth's own motion.
+  5. Frame bias, precession and nutation (IAU 2006/2000A, via ERFA) to the
+     true equator of date, then a turn by the true obliquity to the ecliptic.
 
-``JplEngine``    An independent reduction straight from NASA JPL Development
-                 Ephemeris data (DE421 bundled for tests, any SPK kernel such
-                 as DE440 in production) using IAU 2006/2000A precession and
-                 nutation from ERFA. It exists to check the Swiss engine and to
-                 give a path with no AGPL code.
+Choose the data file with HD_EPHEMERIS:
+  de440            NASA's current file, 1550 to 2650 (default, package naif-de440)
+  de421            the 2008 file, 1900 to 2200 (package de421)
+  /path/to/x.bsp   any JPL SPK planetary kernel, such as de440s.bsp or de441
+
+A different engine can be plugged in with HD_ENGINE=package.module:ClassName.
+It needs ``name``, ``source``, ``sun(jd_tt)`` and ``positions(jd_tt, node)``.
 
 Every public method takes Terrestrial Time (TT) as a Julian day.
-All longitudes are apparent, geocentric, tropical, true equinox of date.
 """
 from __future__ import annotations
 
+import importlib
 import math
 import os
 import threading
 from dataclasses import dataclass
 from pathlib import Path
 
+import erfa
+import numpy as np
+
 BODIES = (
     "sun", "earth", "north_node", "south_node", "moon", "mercury", "venus",
     "mars", "jupiter", "saturn", "uranus", "neptune", "pluto",
 )
-
-DEFAULT_EPHE_PATH = str(Path(__file__).resolve().parent.parent / "ephe")
+_PLANETS = ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn",
+            "uranus", "neptune", "pluto")
 
 
 class EphemerisError(RuntimeError):
@@ -51,251 +61,264 @@ def _norm(x: float) -> float:
     return x + 360.0 if x < 0 else x
 
 
-def _complete(raw: dict[str, Position]) -> dict[str, Position]:
+def complete(raw: dict[str, Position]) -> dict[str, Position]:
     """Add Earth and South Node, which sit exactly opposite Sun and North Node."""
     raw["earth"] = Position(_norm(raw["sun"].longitude + 180.0), raw["sun"].speed)
     raw["south_node"] = Position(
-        _norm(raw["north_node"].longitude + 180.0), raw["north_node"].speed
-    )
+        _norm(raw["north_node"].longitude + 180.0), raw["north_node"].speed)
     return {b: raw[b] for b in BODIES}
 
 
-# --------------------------------------------------------------------------
-# Swiss Ephemeris
-# --------------------------------------------------------------------------
-_SWE_TLS = threading.local()
+_C_AU_DAY = 173.1446326846693      # speed of light, au per day
+_AU_KM = 149597870.700
+_SRS = 1.97412574336e-8            # Schwarzschild radius of the Sun, au
+_PRECESSION_DEG_DAY = 50.288 / 3600.0 / 365.25   # general precession in longitude
+_SPK_TARGET = {"sun": 10, "mercury": 1, "venus": 2, "mars": 4, "jupiter": 5,
+               "saturn": 6, "uranus": 7, "neptune": 8, "pluto": 9}
 
 
-class SwissEngine:
-    """The Swiss Ephemeris C library keeps its state, including the data path,
-    per thread. A web server answers on many threads, so the path is set on
-    each thread before use. Without this, worker threads fall back to the
-    Moshier theory and the file check below rejects the request."""
-
-    name = "swisseph"
-
-    def __init__(self, ephe_path: str | None = None, allow_moshier: bool = False):
-        import swisseph as swe
-
-        self._swe = swe
-        self._lock = threading.Lock()  # the C library keeps global state
-        self.ephe_path = ephe_path or os.environ.get("SE_EPHE_PATH") or DEFAULT_EPHE_PATH
-        self.allow_moshier = allow_moshier
-        self._ids = {
-            "sun": swe.SUN, "moon": swe.MOON, "mercury": swe.MERCURY,
-            "venus": swe.VENUS, "mars": swe.MARS, "jupiter": swe.JUPITER,
-            "saturn": swe.SATURN, "uranus": swe.URANUS, "neptune": swe.NEPTUNE,
-            "pluto": swe.PLUTO,
-        }
-        self.version = swe.version
-        # Fail at start-up, not on the first request.
-        self.sun(2451545.0)
-
-    @property
-    def source(self) -> str:
-        return f"Swiss Ephemeris {self.version}, SE1 files (JPL DE431)"
-
-    def _bind(self) -> None:
-        if getattr(_SWE_TLS, "path", None) != self.ephe_path:
-            self._swe.set_ephe_path(self.ephe_path)
-            _SWE_TLS.path = self.ephe_path
-
-    def _calc(self, jd_tt: float, body: int) -> Position:
-        swe = self._swe
-        want = swe.FLG_SWIEPH | swe.FLG_SPEED
-        with self._lock:
-            self._bind()
-            try:
-                xx, ret = swe.calc(jd_tt, body, want)
-            except swe.Error as exc:  # date outside the installed files
-                raise EphemerisError(str(exc)) from exc
-        if not (ret & swe.FLG_SWIEPH) and not self.allow_moshier:
-            raise EphemerisError(
-                "Swiss Ephemeris data files were not used for this date. "
-                f"Check {self.ephe_path} for sepl_*.se1 and semo_*.se1."
-            )
-        return Position(_norm(xx[0]), xx[3])
-
-    def sun(self, jd_tt: float) -> Position:
-        return self._calc(jd_tt, self._swe.SUN)
-
-    def positions(self, jd_tt: float, node: str = "true") -> dict[str, Position]:
-        swe = self._swe
-        out = {name: self._calc(jd_tt, i) for name, i in self._ids.items()}
-        out["north_node"] = self._calc(
-            jd_tt, swe.TRUE_NODE if node == "true" else swe.MEAN_NODE
-        )
-        return _complete(out)
-
-    # time scales ---------------------------------------------------------
-    def utc_to_tt(self, y, mo, d, h, mi, s) -> float:
-        """UTC calendar date to TT Julian day, leap seconds included."""
-        with self._lock:
-            self._bind()
-            jd_tt, _jd_ut1 = self._swe.utc_to_jd(y, mo, d, h, mi, s, self._swe.GREG_CAL)
-        return jd_tt
-
-    def tt_to_utc(self, jd_tt: float) -> tuple[int, int, int, int, int, float]:
-        with self._lock:
-            self._bind()
-            return self._swe.jdet_to_utc(jd_tt, self._swe.GREG_CAL)
-
-    def delta_t_seconds(self, jd_tt: float) -> float:
-        with self._lock:
-            self._bind()
-            return self._swe.deltat(jd_tt) * 86400.0
+def _rot(m, v):
+    return (m[0][0] * v[0] + m[0][1] * v[1] + m[0][2] * v[2],
+            m[1][0] * v[0] + m[1][1] * v[1] + m[1][2] * v[2],
+            m[2][0] * v[0] + m[2][1] * v[1] + m[2][2] * v[2])
 
 
-# --------------------------------------------------------------------------
-# Independent JPL reduction
-# --------------------------------------------------------------------------
-_C_AU_DAY = 173.1446326846693  # speed of light, au/day
-_GMSUN_OVER_C2_AU = 9.8706286e-9  # heliocentric gravitational constant / c^2, au
+def _sub(a, b):
+    return (a[0] - b[0], a[1] - b[1], a[2] - b[2])
+
+
+def _dot(a, b):
+    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
+
+
+def _cross(a, b):
+    return (a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0])
+
+
+class _Chebyshev:
+    """Scalar evaluation of one SPK type 2 segment: position and velocity.
+
+    jplephem maps the file. Its own evaluator is built for arrays of dates
+    and costs about 75 microseconds a call. A chart needs about ninety calls,
+    so this plain-float Clenshaw recurrence is used instead.
+    """
+
+    def __init__(self, segment, au_km: float):
+        if segment.data_type != 2:
+            raise EphemerisError("Only SPK type 2 (Chebyshev position) segments are supported")
+        self.init, self.intlen, self.coef = segment._data   # coef[k][axis][record], high order first
+        self.n = self.coef.shape[2]
+        self.au = au_km
+        self.start_jd, self.end_jd = segment.start_jd, segment.end_jd
+        self._cache: dict[int, list] = {}
+
+    def pv(self, jd_tdb: float):
+        sec = (jd_tdb - 2451545.0) * 86400.0 - self.init
+        idx = int(sec // self.intlen)
+        if idx == self.n:
+            idx -= 1
+        if not 0 <= idx < self.n:
+            raise EphemerisError("date outside the ephemeris file")
+        rec = self._cache.get(idx)
+        if rec is None:
+            if len(self._cache) > 256:
+                self._cache.clear()
+            rec = self._cache[idx] = self.coef[:, :, idx].tolist()
+        s = 2.0 * (sec - idx * self.intlen) / self.intlen - 1.0
+        s2 = 2.0 * s
+        ax = ay = az = bx = by = bz = 0.0          # w0 and w1 of the recurrence
+        dax = day = daz = dbx = dby = dbz = 0.0    # the same for the derivative
+        for cx, cy, cz in rec[:-1]:
+            # derivative first: it uses the w1 of this step, which is the old w0
+            dax, dbx = 2.0 * ax + dax * s2 - dbx, dax
+            day, dby = 2.0 * ay + day * s2 - dby, day
+            daz, dbz = 2.0 * az + daz * s2 - dbz, daz
+            ax, bx = cx + s2 * ax - bx, ax
+            ay, by = cy + s2 * ay - by, ay
+            az, bz = cz + s2 * az - bz, az
+        cx, cy, cz = rec[-1]
+        k = 1.0 / self.au
+        pos = ((cx + s * ax - bx) * k, (cy + s * ay - by) * k, (cz + s * az - bz) * k)
+        r = 2.0 * 86400.0 / self.intlen * k
+        vel = ((ax + s * dax - dbx) * r, (ay + s * day - dby) * r, (az + s * daz - dbz) * r)
+        return pos, vel
 
 
 class JplEngine:
-    """Apparent places computed directly from JPL DE data.
-
-    Steps: barycentric states from the DE polynomials, light-time iteration,
-    gravitational light deflection by the Sun, relativistic annual aberration,
-    then frame bias, precession and nutation (IAU 2006/2000A) to the true
-    equator and equinox of date, and a rotation by the true obliquity to the
-    ecliptic of date.
-    """
-
     name = "jpl"
 
-    def __init__(self, kernel: str | None = None):
-        import numpy as np
-        import erfa
-
-        self._np, self._erfa = np, erfa
-        kernel = kernel or os.environ.get("JPL_KERNEL")
-        if kernel:
+    def __init__(self, dataset: str | None = None):
+        dataset = dataset or os.environ.get("HD_EPHEMERIS") or "de440"
+        self._legacy = None
+        self._seg = {}
+        key = dataset.lower()
+        if key == "de421":
+            try:
+                import de421
+                from jplephem import Ephemeris
+            except ImportError as exc:
+                raise EphemerisError("HD_EPHEMERIS=de421 needs: pip install de421") from exc
+            self._legacy = Ephemeris(de421)
+            for n in ("earthmoon", "moon", "sun", *list(_SPK_TARGET)[1:]):
+                self._legacy.position(n, 2451545.0)          # load now, not per thread
+            self._au = float(self._legacy.AU)
+            self._emrat = float(self._legacy.EMRAT)
+            self.jd_min, self.jd_max = float(self._legacy.jalpha), float(self._legacy.jomega)
+            label = "DE421"
+        else:
+            if key == "de440":
+                try:
+                    import naif_de440
+                except ImportError as exc:
+                    raise EphemerisError(
+                        "HD_EPHEMERIS=de440 needs: pip install naif-de440") from exc
+                path = naif_de440.de440
+                label = "DE440"
+            else:
+                path = dataset
+                if not Path(path).is_file():
+                    raise EphemerisError(f"Ephemeris file not found: {path}")
+                label = Path(path).stem.upper()
             from jplephem.spk import SPK
 
-            self._spk = SPK.open(kernel)
-            self._legacy = None
-            self.source = f"JPL {Path(kernel).name}, IAU 2006/2000A (ERFA)"
-            self.AU = 149597870.700
-            for pair in ((0, 3), (3, 301), (3, 399), (0, 10)):
-                self._spk[pair]  # raises KeyError early if the kernel lacks a segment
-        else:
-            import de421
-            from jplephem import Ephemeris
+            self._kernel = SPK.open(path)
+            need = [(0, 3), (3, 399), (3, 301), *[(0, c) for c in _SPK_TARGET.values()]]
+            lo, hi = -1e99, 1e99
+            for pair in need:
+                try:
+                    seg = _Chebyshev(self._kernel[pair], _AU_KM)
+                except KeyError as exc:
+                    raise EphemerisError(
+                        f"{path} has no segment {pair}. A planetary kernel is required.") from exc
+                self._seg[pair] = seg
+                lo, hi = max(lo, seg.start_jd), min(hi, seg.end_jd)
+            self.jd_min, self.jd_max = lo, hi
+        self.dataset = label
+        self.source = f"NASA JPL {label}, IAU 2006/2000A"
 
-            self._legacy = Ephemeris(de421)
-            self._spk = None
-            self.source = "JPL DE421, IAU 2006/2000A (ERFA)"
-            self.AU = self._legacy.AU
-        self._delta = 1.0 / 1440.0  # one minute, for numerical speeds
-
-    # barycentric position and velocity in au and au/day -------------------
-    _SPK_TARGET = {
-        "sun": 10, "mercury": 1, "venus": 2, "mars": 4, "jupiter": 5,
-        "saturn": 6, "uranus": 7, "neptune": 8, "pluto": 9,
-    }
-
-    def _bary(self, name: str, jd_tdb: float):
-        np = self._np
+    # -- raw states, au and au/day, barycentric ICRF -----------------------
+    def _pv(self, name: str, jd_tdb: float):
         if self._legacy is not None:
             e = self._legacy
-            if name == "earth" or name == "moon":
-                emb, vemb = e.position_and_velocity("earthmoon", jd_tdb)
-                gm, vgm = e.position_and_velocity("moon", jd_tdb)  # geocentric
-                k = 1.0 / (1.0 + e.EMRAT)
-                p, v = emb - gm * k, vemb - vgm * k
-                if name == "moon":
-                    p, v = p + gm, v + vgm
-            else:
-                p, v = e.position_and_velocity(name, jd_tdb)
-            return np.ravel(p) / self.AU, np.ravel(v) / self.AU
-        s = self._spk
+            try:
+                if name in ("earth", "moon"):
+                    emb, vemb = e.position_and_velocity("earthmoon", jd_tdb)
+                    gm, vgm = e.position_and_velocity("moon", jd_tdb)   # geocentric
+                    k = 1.0 / (1.0 + self._emrat)
+                    p, v = emb - gm * k, vemb - vgm * k
+                    if name == "moon":
+                        p, v = p + gm, v + vgm
+                else:
+                    p, v = e.position_and_velocity(name, jd_tdb)
+            except (ValueError, IndexError) as exc:
+                raise EphemerisError(self.range_message()) from exc
+            return (tuple((np.ravel(p) / self._au).tolist()),
+                    tuple((np.ravel(v) / self._au).tolist()))
         if name in ("earth", "moon"):
-            emb, vemb = s[0, 3].compute_and_differentiate(jd_tdb)
-            code = 399 if name == "earth" else 301
-            p, v = s[3, code].compute_and_differentiate(jd_tdb)
-            p, v = emb + p, vemb + v
-        else:
-            p, v = s[0, self._SPK_TARGET[name]].compute_and_differentiate(jd_tdb)
-        return np.ravel(p) / self.AU, np.ravel(v) / self.AU
+            (ex, ey, ez), (evx, evy, evz) = self._seg[(0, 3)].pv(jd_tdb)
+            (px, py, pz), (vx, vy, vz) = self._seg[(3, 399 if name == "earth" else 301)].pv(jd_tdb)
+            return (ex + px, ey + py, ez + pz), (evx + vx, evy + vy, evz + vz)
+        return self._seg[(0, _SPK_TARGET[name])].pv(jd_tdb)
 
-    def _tdb(self, jd_tt: float) -> float:
+    def year_range(self) -> tuple[int, int]:
+        """First and last full calendar years the data file covers."""
+        return (int(2000 + (self.jd_min - 2451545.0) / 365.25) + 1,
+                int(2000 + (self.jd_max - 2451545.0) / 365.25) - 1)
+
+    def range_message(self) -> str:
+        y0, y1 = self.year_range()
+        return f"{self.dataset} covers the years {y0} to {y1}"
+
+    @staticmethod
+    def _tdb(jd_tt: float) -> float:
         g = math.radians(357.53 + 0.9856003 * (jd_tt - 2451545.0))
         return jd_tt + (0.001658 * math.sin(g) + 0.000014 * math.sin(2 * g)) / 86400.0
 
-    def _to_ecliptic_of_date(self, jd_tt: float):
-        """Rotation matrix: ICRS to true ecliptic and equinox of date."""
-        erfa = self._erfa
-        rnpb = erfa.pnm06a(jd_tt, 0.0)
-        dpsi, deps = erfa.nut06a(jd_tt, 0.0)
-        eps = erfa.obl06(jd_tt, 0.0) + deps
+    @staticmethod
+    def _to_ecliptic_of_date(jd_tt: float):
+        """Rotation matrix: ICRS to the true ecliptic and equinox of date."""
+        _dpsi, deps, epsa, _rb, _rp, _rbp, _rn, rbpn = erfa.pn06a(jd_tt, 0.0)
+        eps = float(epsa) + float(deps)
         c, s = math.cos(eps), math.sin(eps)
-        rx = self._np.array([[1, 0, 0], [0, c, s], [0, -s, c]])
-        return rx @ rnpb
+        return (np.array([[1.0, 0.0, 0.0], [0.0, c, s], [0.0, -s, c]]) @ rbpn).tolist()
 
-    def _apparent_vector(self, name: str, jd_tt: float):
-        np, erfa = self._np, self._erfa
+    def _frame(self, jd_tt: float):
+        if not (self.jd_min + 1 < jd_tt < self.jd_max - 1):
+            raise EphemerisError(self.range_message())
         t = self._tdb(jd_tt)
-        e_p, e_v = self._bary("earth", t)
-        s_p, _ = self._bary("sun", t)
-        lt = 0.0
-        for _ in range(4):
-            b_p, _ = self._bary(name, t - lt)
-            geo = b_p - e_p
-            dist = float(np.linalg.norm(geo))
-            lt = dist / _C_AU_DAY
-        unit = geo / dist
-        e_helio = e_p - s_p
-        em = float(np.linalg.norm(e_helio))
+        e_p, e_v = self._pv("earth", t)
+        s_p, _ = self._pv("sun", t)
+        return t, e_p, e_v, s_p, self._to_ecliptic_of_date(jd_tt)
+
+    def _apparent(self, name: str, frame) -> Position:
+        t, e_p, e_v, s_p, rot = frame
+        # Light time. Two passes leave an error far below a milliarcsecond.
+        b_p, b_v = self._pv(name, t)
+        geo = _sub(b_p, e_p)
+        dist = math.sqrt(_dot(geo, geo))
+        b_p, b_v = self._pv(name, t - dist / _C_AU_DAY)
+        geo = _sub(b_p, e_p)
+        dist = math.sqrt(_dot(geo, geo))
+        p = (geo[0] / dist, geo[1] / dist, geo[2] / dist)
+
+        e_h = _sub(e_p, s_p)                      # Sun to observer
+        em = math.sqrt(_dot(e_h, e_h))
+        e_u = (e_h[0] / em, e_h[1] / em, e_h[2] / em)
         if name not in ("sun", "moon"):
-            # light deflection by the Sun
-            sun_then, _ = self._bary("sun", t - lt)
-            q = b_p - sun_then
-            q_unit = q / float(np.linalg.norm(q))
-            unit = erfa.ld(1.0, unit, q_unit, e_helio / em, em, 1e-9)
-        v = e_v / _C_AU_DAY
-        bm1 = math.sqrt(1.0 - float(v @ v))
-        unit = erfa.ab(unit, v, em, bm1)
-        return self._to_ecliptic_of_date(jd_tt) @ unit
+            # Light deflection by the Sun (the ERFA "ld" formula).
+            q = _sub(b_p, s_p)
+            qn = math.sqrt(_dot(q, q))
+            q = (q[0] / qn, q[1] / qn, q[2] / qn)
+            qpe = (q[0] + e_u[0], q[1] + e_u[1], q[2] + e_u[2])
+            w = _SRS / em / max(_dot(q, qpe), 1e-9)
+            d = _cross(p, _cross(e_u, q))
+            p = (p[0] + w * d[0], p[1] + w * d[1], p[2] + w * d[2])
+        # Annual aberration (the ERFA "ab" formula, relativistic).
+        v = (e_v[0] / _C_AU_DAY, e_v[1] / _C_AU_DAY, e_v[2] / _C_AU_DAY)
+        bm1 = math.sqrt(1.0 - _dot(v, v))
+        pdv = _dot(p, v)
+        w1 = 1.0 + pdv / (1.0 + bm1)
+        w2 = _SRS / em
+        a = tuple(p[i] * bm1 + w1 * v[i] + w2 * (v[i] - pdv * p[i]) for i in range(3))
+        x, y, _ = _rot(rot, a)
+        # Rate of change from the relative velocity, plus precession of the equinox.
+        gx, gy, _ = _rot(rot, geo)
+        vx, vy, _ = _rot(rot, _sub(b_v, e_v))
+        speed = math.degrees((gx * vy - gy * vx) / (gx * gx + gy * gy)) + _PRECESSION_DEG_DAY
+        return Position(_norm(math.degrees(math.atan2(y, x))), speed)
 
-    def _lon(self, name: str, jd_tt: float) -> float:
-        x, y, _ = self._apparent_vector(name, jd_tt)
-        return _norm(math.degrees(math.atan2(y, x)))
-
-    def _true_node(self, jd_tt: float) -> float:
+    def _true_node(self, jd_tt: float, rot) -> float:
         """Ascending node of the Moon's osculating orbit, ecliptic of date."""
-        np = self._np
         t = self._tdb(jd_tt)
-        e_p, e_v = self._bary("earth", t)
-        m_p, m_v = self._bary("moon", t)
-        rot = self._to_ecliptic_of_date(jd_tt)
-        r, v = rot @ (m_p - e_p), rot @ (m_v - e_v)
-        h = np.cross(r, v)
+        e_p, e_v = self._pv("earth", t)
+        m_p, m_v = self._pv("moon", t)
+        h = _cross(_rot(rot, _sub(m_p, e_p)), _rot(rot, _sub(m_v, e_v)))
         return _norm(math.degrees(math.atan2(h[0], -h[1])))
 
-    def _mean_node(self, jd_tt: float) -> float:
+    @staticmethod
+    def _mean_node(jd_tt: float) -> float:
         t = (jd_tt - 2451545.0) / 36525.0
         return _norm(125.0445479 - 1934.1362891 * t + 0.0020754 * t * t
                      + t ** 3 / 467441.0 - t ** 4 / 60616000.0)
 
-    def _pos(self, fn, jd_tt: float) -> Position:
-        d = self._delta
-        a, b = fn(jd_tt - d), fn(jd_tt + d)
-        diff = (b - a + 540.0) % 360.0 - 180.0
-        return Position(fn(jd_tt), diff / (2 * d))
-
+    # -- public ------------------------------------------------------------
     def sun(self, jd_tt: float) -> Position:
-        return self._pos(lambda t: self._lon("sun", t), jd_tt)
+        return self._apparent("sun", self._frame(jd_tt))
 
     def positions(self, jd_tt: float, node: str = "true") -> dict[str, Position]:
-        out = {}
-        for name in ("sun", "moon", "mercury", "venus", "mars", "jupiter",
-                     "saturn", "uranus", "neptune", "pluto"):
-            out[name] = self._pos(lambda t, n=name: self._lon(n, t), jd_tt)
-        node_fn = self._true_node if node == "true" else self._mean_node
-        out["north_node"] = self._pos(node_fn, jd_tt)
-        return _complete(out)
+        frame = self._frame(jd_tt)
+        out = {name: self._apparent(name, frame) for name in _PLANETS}
+        d = 1.0 / 1440.0
+        if node == "true":
+            rot = frame[4]
+            a, b = self._true_node(jd_tt - d, rot), self._true_node(jd_tt + d, rot)
+            out["north_node"] = Position(self._true_node(jd_tt, rot),
+                                         ((b - a + 540.0) % 360.0 - 180.0) / (2 * d))
+        else:
+            a, b = self._mean_node(jd_tt - d), self._mean_node(jd_tt + d)
+            out["north_node"] = Position(self._mean_node(jd_tt),
+                                         ((b - a + 540.0) % 360.0 - 180.0) / (2 * d))
+        return complete(out)
 
 
 # --------------------------------------------------------------------------
@@ -345,10 +368,18 @@ _ENGINE_LOCK = threading.Lock()
 
 
 def get_engine():
-    """Engine chosen by HD_ENGINE (swisseph by default, or jpl)."""
+    """The process-wide engine, built once from HD_ENGINE and HD_EPHEMERIS."""
     global _ENGINE
     with _ENGINE_LOCK:
         if _ENGINE is None:
-            which = os.environ.get("HD_ENGINE", "swisseph").lower()
-            _ENGINE = JplEngine() if which == "jpl" else SwissEngine()
+            spec = os.environ.get("HD_ENGINE", "jpl")
+            if spec == "jpl":
+                _ENGINE = JplEngine()
+            else:
+                try:
+                    module, _, cls = spec.partition(":")
+                    _ENGINE = getattr(importlib.import_module(module), cls)()
+                except (ImportError, AttributeError, ValueError) as exc:
+                    raise EphemerisError(
+                        f"HD_ENGINE={spec!r} must be 'jpl' or 'package.module:ClassName'") from exc
         return _ENGINE

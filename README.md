@@ -15,9 +15,11 @@ A free Human Design chart engine and bodygraph renderer. It returns the full cha
 
 ## Accuracy
 
-Positions come from Swiss Ephemeris reading its JPL-derived data files. A second engine, written against NASA JPL data with no shared astronomy code, checks the first. The two agree within 0.35 arcseconds on every body. The finest unit on the wheel spans 18.75 arcseconds.
+Positions come straight from NASA's Jet Propulsion Laboratory. The engine reads the DE440 planetary ephemeris and applies light time, light deflection, aberration, and IAU 2006/2000A precession and nutation.
 
-The service reproduces all 104 activations of four reference charts published by Jovian Archive. See [ACCURACY.md](ACCURACY.md) for the method, the evidence, the defects found in other open-source projects, and the list of things not yet verified.
+The service reproduces all 104 activations of four reference charts published by Jovian Archive. It agrees with Swiss Ephemeris, the library most astrology software uses, within 0.01 arcseconds on the Sun, Moon and planets for dates from 1900 to 2050. The finest unit on the wheel spans 18.75 arcseconds.
+
+See [ACCURACY.md](ACCURACY.md) for the method, the evidence, the defects found in other open-source projects, and the list of things not yet verified.
 
 ## Run it
 
@@ -26,7 +28,7 @@ pip install -r requirements.txt
 uvicorn bodygraph.api:app --port 8000
 ```
 
-Open `http://localhost:8000/docs` for interactive documentation.
+Open `http://localhost:8000/docs` for interactive documentation. The first install downloads NASA's DE440 file, about 114 MB.
 
 With Docker:
 
@@ -51,7 +53,7 @@ On Railway, point a service at this repository. `railway.json` selects the Docke
 | GET | `/v1/transit/overlay.svg` | The same, drawn |
 | GET | `/v1/places?q=` | City search with coordinates and time zone |
 | GET | `/v1/reference` | Gates in wheel order, channels, centers |
-| GET | `/health` | Engine and data source in use |
+| GET | `/health` | Engine, data file and supported years |
 
 ### Giving a birth moment
 
@@ -87,6 +89,20 @@ curl "localhost:8000/v1/chart.png?utc=1948-04-09T05:14:00Z&theme=dark&scale=2" -
 | `node` | `true`, `mean` | `true` |
 | `uncertainty_minutes` | 1 to 720 | off |
 
+## Choosing the data
+
+The engine reads any NASA JPL planetary file. Set `HD_EPHEMERIS`.
+
+| Value | Years | Size | Notes |
+|---|---|---|---|
+| `de440` (default) | 1551 to 2649 | 114 MB | NASA's current file. Installed with the requirements. |
+| `de421` | 1900 to 2199 | 27 MB | The 2008 file. `pip install de421`. |
+| `/path/to/file.bsp` | set by the file | varies | Any SPK planetary kernel, such as `de440s.bsp` or `de441.bsp` from [NAIF](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/). |
+
+A different engine can replace the built-in one. Set `HD_ENGINE=package.module:ClassName`. The class needs `name`, `source`, `sun(jd_tt)` and `positions(jd_tt, node)`.
+
+`contrib/swisseph_engine` holds one such engine, a Swiss Ephemeris adapter. It is a separate work under the AGPL and the Docker image leaves it out. Read its README before you deploy with it.
+
 ## Use as a library
 
 ```python
@@ -105,20 +121,21 @@ pip install -r requirements-dev.txt
 pytest
 ```
 
+The Swiss Ephemeris cross-check runs when `pyswisseph` is installed and is skipped otherwise.
+
 ## Configuration
 
 | Variable | Meaning | Default |
 |---|---|---|
-| `HD_ENGINE` | `swisseph` or `jpl` | `swisseph` |
-| `SE_EPHE_PATH` | Folder holding the `.se1` files | `./ephe` |
-| `JPL_KERNEL` | Path to an SPK kernel such as `de440s.bsp` | bundled DE421 test data |
+| `HD_EPHEMERIS` | `de440`, `de421`, or a path to a `.bsp` file | `de440` |
+| `HD_ENGINE` | `jpl`, or `package.module:ClassName` | `jpl` |
 | `CORS_ORIGINS` | Comma-separated origins | `*` |
 | `WEB_CONCURRENCY` | Worker processes | 2 |
 
 ## License
 
-AGPL-3.0-or-later. The default engine links Swiss Ephemeris, which Astrodienst offers under the AGPL or a paid Professional License. Running this service in public under the AGPL requires that its source stay available to its users. Callers of the API carry no obligation.
+[CC BY-NC-SA 4.0](LICENSE). Use it, copy it and adapt it for non-commercial purposes. Give credit. Share adaptations under the same license. Commercial use needs written permission from the copyright holder.
 
-Two routes lead to a different license. Buy the Swiss Ephemeris Professional License, or run with `HD_ENGINE=jpl` and remove `pyswisseph`. The JPL engine depends on MIT and BSD code and public-domain NASA data. It needs a small change first: UTC to TT conversion currently borrows a Swiss Ephemeris routine.
+The planetary data is a NASA work with no license condition. Every runtime dependency carries a permissive license. See [NOTICE](NOTICE) for credits and [CONTRIBUTING.md](CONTRIBUTING.md) for the contributor grant.
 
-Fonts, data sources and credits are listed in [NOTICE](NOTICE).
+Creative Commons wrote its licenses for creative works and does not recommend them for software. They still apply to code. Ask a lawyer whether a software-specific license fits your plans better before you rely on this one in a dispute.

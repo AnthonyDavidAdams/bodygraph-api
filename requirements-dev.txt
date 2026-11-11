@@ -1,8 +1,7 @@
 -r requirements.txt
 pytest>=8
 httpx>=0.27
-# independent JPL engine used by the cross-check tests
-numpy>=1.26
-pyerfa>=2.0
-jplephem>=2.20
+# second NASA data file, used to test the dataset option
 de421==2008.1
+# optional cross-check against Swiss Ephemeris (AGPL). Tests skip without it.
+pyswisseph>=2.10.3.2

@@ -1,10 +1,25 @@
 Bodygraph API
-Licensed under the GNU Affero General Public License, version 3 or later.
+Copyright (c) 2026 Anthony David Adams
 
-This service links the Swiss Ephemeris (Astrodienst AG), which is offered
-under the AGPL or a paid Professional License. See ephe/LICENSE-swisseph.txt.
-The files in ephe/*.se1 are Swiss Ephemeris data files from
-https://github.com/aloistr/swisseph.
+Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+International (CC BY-NC-SA 4.0). See LICENSE.
+
+  You may use, copy and adapt this work for non-commercial purposes.
+  You must give credit and link to the license.
+  You must share adaptations under the same license.
+  Commercial use needs written permission from the copyright holder.
+
+Planetary data: NASA Jet Propulsion Laboratory Development Ephemeris DE440
+(Park, Folkner, Williams and Boggs, 2021), a work of the United States
+government, delivered through the naif-de440 package (MIT, B612 Asteroid
+Institute).
+
+Precession and nutation: ERFA, the BSD-licensed derivative of the IAU SOFA
+library, through pyerfa. File reader: jplephem (MIT, Brandon Rhodes).
+
+Delta T before 1972: Morrison, Stephenson, Hohenkerk and Zawilski, "Addendum
+2020 to Measurement of the Earth's rotation: 720 BC to AD 2015", Proc. R.
+Soc. A 477 (2021), Table S15.
 
 Fonts: Barlow and Barlow Semi Condensed by Jeremy Tribby, SIL Open Font
 License 1.1. See bodygraph/fonts/OFL-barlow.txt. Text in rendered charts is
@@ -19,3 +34,7 @@ these MIT-licensed projects:
 
 Place data: GeoNames (CC BY 4.0) through the geonamescache package.
 Reference chart activations used in tests were published by Jovian Archive.
+
+contrib/swisseph_engine is a separate work under the GNU AGPL-3.0-or-later.
+It is optional, it is not imported by default, and the Docker image leaves it
+out. See contrib/swisseph_engine/README.md.

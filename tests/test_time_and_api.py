@@ -102,7 +102,12 @@ def test_composite_transit_places_reference():
     assert p["timezone"] == "America/New_York" and p["country_code"] == "US"
     ref = client.get("/v1/reference").json()
     assert len(ref["gates_in_wheel_order"]) == 64 and len(ref["channels"]) == 36
-    assert client.get("/health").json()["status"] == "ok"
+    h = client.get("/health").json()
+    assert h["status"] == "ok" and h["engine"] == "jpl" and "DE440" in h["ephemeris"]
+    assert h["years"] == [1583, 2649]
+    assert client.get("/v1/transit", params={"at": "2700-01-01T00:00:00Z"}).status_code == 422
+    old = client.get("/v1/chart", params={"utc": "1650-03-01T12:00:00Z"})
+    assert old.status_code == 200 and old.json()["calculation"]["tt_minus_utc_seconds"] > 30
     assert client.get("/").status_code == 200
 
 

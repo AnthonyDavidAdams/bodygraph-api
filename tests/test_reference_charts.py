@@ -7,7 +7,6 @@ from datetime import datetime, timezone
 import pytest
 
 from bodygraph.chart import build_chart
-from bodygraph.ephemeris import JplEngine, SwissEngine
 
 ORDER = ["sun", "earth", "moon", "north_node", "south_node", "mercury", "venus", "mars",
          "jupiter", "saturn", "uranus", "neptune", "pluto"]
@@ -25,14 +24,12 @@ CHARTS = [
      "19.2 33.2 34.5 61.4 62.4 49.1 19.2 43.6 35.6 44.2 53.6 32.6 4.6",
      "44.4 24.4 18.4 60.2 56.2 34.1 57.6 46.4 12.4 50.6 62.3 32.4 29.1", "PRL DRR"),
 ]
-ENGINES = {"swisseph": SwissEngine(), "jpl": JplEngine()}
-
-
-@pytest.mark.parametrize("engine", ENGINES)
+@pytest.mark.parametrize("engine", ["de440", "de421", "swiss"])
 @pytest.mark.parametrize("case", CHARTS, ids=[c[0] for c in CHARTS])
-def test_all_26_activations(engine, case):
+def test_all_26_activations(engine, case, request):
     name, utc, hd_type, profile, p_ref, d_ref, variables = case
-    c = build_chart(datetime(*utc, tzinfo=timezone.utc), engine=ENGINES[engine])
+    c = build_chart(datetime(*utc, tzinfo=timezone.utc),
+                    engine=request.getfixturevalue(engine))
     for imprint, ref in (("personality", p_ref), ("design", d_ref)):
         got = [c["activations"][imprint][b]["gate_line"] for b in ORDER]
         assert got == ref.split(), f"{name} {imprint}"
