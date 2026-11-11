@@ -258,11 +258,12 @@ def chart_post(req: ChartRequest):
     return _full(req, req.node, req.uncertainty_minutes)
 
 
-def _render_natal(b: Birth, node, theme, layout, center_colors, disclaimer, background) -> str:
+def _render_natal(b: Birth, node, theme, layout, center_colors, disclaimer, background,
+                  figure=True) -> str:
     r, info = resolve_birth(b)
     return render.render_svg(_chart(r.utc, node), name=b.name, subtitle=_subtitle(info),
                              theme=theme, layout=layout, center_colors=center_colors,
-                             disclaimer=disclaimer, background=background)
+                             disclaimer=disclaimer, background=background, figure=figure)
 
 
 @app.get("/v1/chart.svg", tags=["chart"], summary="Bodygraph as SVG",
@@ -270,8 +271,9 @@ def _render_natal(b: Birth, node, theme, layout, center_colors, disclaimer, back
 def chart_svg(b: Birth = Depends(birth_query), node: Node = "true", theme: Theme = "light",
               layout: Literal["full", "graph"] = "full",
               center_colors: Literal["traditional", "mono"] = "traditional",
-              disclaimer: bool = True, background: bool = True):
-    return _svg(_render_natal(b, node, theme, layout, center_colors, disclaimer, background))
+              disclaimer: bool = True, background: bool = True, figure: bool = True):
+    return _svg(_render_natal(b, node, theme, layout, center_colors, disclaimer, background,
+                              figure))
 
 
 @app.get("/v1/chart.png", tags=["chart"], summary="Bodygraph as PNG",
@@ -279,8 +281,10 @@ def chart_svg(b: Birth = Depends(birth_query), node: Node = "true", theme: Theme
 def chart_png(b: Birth = Depends(birth_query), node: Node = "true", theme: Theme = "light",
               layout: Literal["full", "graph"] = "full",
               center_colors: Literal["traditional", "mono"] = "traditional",
-              disclaimer: bool = True, scale: float = Query(2.0, ge=0.5, le=4.0)):
-    return _png(_render_natal(b, node, theme, layout, center_colors, disclaimer, True), scale)
+              disclaimer: bool = True, figure: bool = True,
+              scale: float = Query(2.0, ge=0.5, le=4.0)):
+    return _png(_render_natal(b, node, theme, layout, center_colors, disclaimer, True, figure),
+                scale)
 
 
 # --------------------------------------------------------------------------

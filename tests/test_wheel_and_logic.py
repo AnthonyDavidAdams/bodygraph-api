@@ -92,3 +92,17 @@ def test_composite_classification():
     assert kinds["19-49"] == "compromise" and kinds["25-51"] == "dominance"
     assert kinds["26-44"] == "electromagnetic"
     assert composite(a, a)["connection_counts"] == {"companionship": len(a["channels"])}
+
+
+def test_channel_geometry_is_complete_and_joined():
+    from bodygraph import geometry as geo
+    pairs = {tuple(sorted(k)) for k in geo.CURVES} | set(geo.INTEGRATION_CHANNELS)
+    assert pairs == {tuple(c["gates"]) for c in D.CHANNELS}
+    for (a, b), curve in geo.CURVES.items():
+        assert curve[0] == geo.G[a] and curve[3] == geo.G[b]
+    # each arm of the Integration group starts at its gate and ends on the spine
+    for gate, (curve, t0, t1) in geo.INTEGRATION_ARMS.items():
+        start, end = geo.bezier(curve, t0), geo.bezier(curve, t1)
+        assert max(abs(start[0] - geo.G[gate][0]), abs(start[1] - geo.G[gate][1])) < 1e-9
+        on_spine = min(abs(end[0] - j[0]) + abs(end[1] - j[1]) for j in (geo.J10, geo.J34))
+        assert on_spine < 1e-9

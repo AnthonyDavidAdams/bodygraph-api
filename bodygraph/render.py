@@ -23,7 +23,7 @@ THEMES = {
         design="#D7301F", personality="#12161C",
         channel_edge="#C5CAD3", channel_fill="#FFFFFF",
         center_open="#FFFFFF", center_stroke="#8E96A3", gate_idle="#8B93A0",
-        badge_ring="#FFFFFF", badge_text="#FFFFFF",
+        badge_ring="#FFFFFF", badge_text="#FFFFFF", figure="#F2F4F7",
         tints=dict(yellow=("#FBE9A6", "#A08419"), green=("#C3E3C7", "#3F7F4C"),
                    brown=("#EAD3BD", "#8A5E3B"), red=("#F8C6BA", "#A9503E")),
         mono=("#DDE2EA", "#5E6876"),
@@ -34,7 +34,7 @@ THEMES = {
         design="#FF5A47", personality="#EEF1F5",
         channel_edge="#3A4350", channel_fill="#0E1218",
         center_open="#0E1218", center_stroke="#5C6675", gate_idle="#7B8493",
-        badge_ring="#0E1218", badge_text="#0E1218",
+        badge_ring="#0E1218", badge_text="#0E1218", figure="#161C25",
         tints=dict(yellow=("#5E4F16", "#D9B93F"), green=("#234A2C", "#7DC48A"),
                    brown=("#4E3724", "#C99B73"), red=("#5A2A21", "#EE9280")),
         mono=("#28303B", "#9AA4B2"),
@@ -101,20 +101,26 @@ def _arrow(x: float, y: float, direction: str, color: str, length: float = 26.0)
 # --------------------------------------------------------------------------
 # the bodygraph itself
 # --------------------------------------------------------------------------
-def _band(p, q, colors, wide=geo.BAND + 2.0) -> str:
-    """One piece of channel. Two colours split the band lengthwise."""
+def _stroke(points, color, width) -> str:
+    d = "M" + "L".join(f"{_f(x)} {_f(y)}" for x, y in points)
+    return (f'<path d="{d}" fill="none" stroke="{color}" stroke-width="{_f(width)}" '
+            f'stroke-linejoin="round"/>')
+
+
+def _band(piece, colors, wide=geo.BAND + 2.0, over=0.012) -> str:
+    """One piece of channel, (curve, t from, t to). Two colours split it lengthwise.
+
+    ``over`` runs the piece slightly past its far end so neighbours overlap.
+    """
+    curve, t0, t1 = piece
+    t1 = t1 + over if t1 > t0 else t1 - over
+    pts = geo.sample(curve, t0, min(max(t1, 0.0), 1.0))
     if len(colors) > 1:
-        h = wide / 2.0
-        return (_poly(geo.band_polygon(p, q, h + 0.3, -h / 2), colors[0])
-                + _poly(geo.band_polygon(p, q, h + 0.3, h / 2), colors[1]))
-    return _poly(geo.band_polygon(p, q, wide), colors[0])
-
-
-def _extend(p, q, by=1.2):
-    """Lengthen p->q a little at q so adjoining pieces overlap without a seam."""
-    dx, dy = q[0] - p[0], q[1] - p[1]
-    n = math.hypot(dx, dy) or 1.0
-    return (q[0] + dx / n * by, q[1] + dy / n * by)
+        q = wide / 4.0
+        flip = -1.0 if t1 < t0 else 1.0          # keep each colour on the same side
+        return (_stroke(geo.offset_points(pts, -q * flip), colors[0], wide / 2 + 0.4)
+                + _stroke(geo.offset_points(pts, q * flip), colors[1], wide / 2 + 0.4))
+    return _stroke(pts, colors[0], wide)
 
 
 def _merge(sets) -> tuple:
@@ -136,24 +142,22 @@ def bodygraph_group(t: dict, gate_colors: dict[int, tuple], defined_channels: se
     gate_notes = gate_notes or {}
     edge, fill, active = [], [], []
 
-    def base(p, q):
-        edge.append(_poly(geo.band_polygon(p, q, geo.BAND + 2.0), t["channel_edge"]))
-        fill.append(_poly(geo.band_polygon(p, q, geo.BAND), t["channel_fill"]))
+    def base(curve, t0=0.0, t1=1.0):
+        pts = geo.sample(curve, t0, t1)
+        edge.append(_stroke(pts, t["channel_edge"], geo.BAND + 2.0))
+        fill.append(_stroke(pts, t["channel_fill"], geo.BAND))
 
-    for ch in D.CHANNELS:
-        a, b = ch["gates"]
-        if (a, b) in geo.INTEGRATION_CHANNELS:
-            continue
-        base(geo.G[a], geo.G[b])
-        for (start, mid), g in zip(geo.channel_halves(a, b), (a, b)):
+    for (a, b), curve in geo.CURVES.items():
+        base(curve)
+        for piece, g in zip(geo.channel_halves(a, b), (a, b)):
             if g in gate_colors:
-                active.append(_band(start, _extend(start, mid, 0.6), gate_colors[g]))
-    for g, (start, joint) in geo.INTEGRATION_ARMS.items():
-        base(start, joint)
-    base(geo.J10, geo.J34)
-    for g, (start, joint) in geo.INTEGRATION_ARMS.items():
+                active.append(_band(piece, gate_colors[g]))
+    base(geo.SPINE)
+    base(geo.ARM10)
+    base(geo.ARM34)
+    for g, piece in geo.INTEGRATION_ARMS.items():
         if g in gate_colors:
-            active.append(_band(start, _extend(start, joint), gate_colors[g]))
+            active.append(_band(piece, gate_colors[g]))
     # The spine between the two junctions lights only for a defined channel
     # that runs through it. Each half takes the colour of its nearer gate.
     spine: dict[str, list] = {"upper": [], "lower": []}
@@ -161,10 +165,9 @@ def bodygraph_group(t: dict, gate_colors: dict[int, tuple], defined_channels: se
         if pair in defined_channels:
             for piece in pieces:
                 spine[piece] += [gate_colors[g] for g in geo.SPINE_OWNER[piece] if g in pair]
-    for piece, cols in spine.items():
+    for name, cols in spine.items():
         if cols:
-            p, q = geo.INTEGRATION_SPINE[piece]
-            active.append(_band(_extend(q, p), _extend(p, q), _merge(cols)))
+            active.append(_band(geo.INTEGRATION_SPINE[name], _merge(cols)))
 
     out = ["<g>", "".join(edge), "".join(fill), "".join(active), "</g>"]
 
@@ -222,25 +225,34 @@ def _natal_layers(chart: dict, t: dict):
 # side columns
 # --------------------------------------------------------------------------
 def _column(acts: dict, color: str, heading: str, x: float, y0: float, pitch: float,
-            align: str, marks: bool = True) -> str:
+            align: str, marks: bool = True, arrows: dict | None = None) -> str:
+    """Thirteen rows of glyph and gate.line. The gate is set large and the
+    line small. ``arrows`` maps a body to 'left' or 'right' for a Variable."""
+    arrows = arrows or {}
     out = []
     for i, body in enumerate(ORDER):
         a = acts[body]
         y = y0 + i * pitch
-        num = f'{a["gate"]}.{a["line"]}'
-        w = ts.measure(num, 23, "num")
+        gate, line = str(a["gate"]), f'.{a["line"]}'
+        wg, wl = ts.measure(gate, 24, "numbold"), ts.measure(line, 17, "num")
         if align == "right":
-            tx, anchor, mx = x - 22, "end", x - 22 - w - 9
+            start = x - 22 - wg - wl
+            inner, step = start - 10, -1
         else:
-            tx, anchor, mx = x + 22, "start", x + 22 + w + 9
+            start = x + 22
+            inner, step = start + wg + wl + 10, 1
         retro = a["retrograde"] and body not in ("north_node", "south_node", "sun", "earth")
         out.append(f"<g><title>{heading} {D.BODY_NAMES[body]}: gate {a['gate']}, "
                    f"line {a['line']}, color {a['color']}, tone {a['tone']}, base {a['base']}"
                    f"{', retrograde' if retro else ''}</title>")
         out.append(_glyph(body, x, y - 7.5, 19, color))
-        out.append(ts.text(tx, y, num, 23, font="num", fill=color, anchor=anchor))
+        out.append(ts.text(start, y, gate, 24, font="numbold", fill=color))
+        out.append(ts.text(start + wg, y, line, 17, font="num", fill=color))
+        if body in arrows:
+            out.append(_arrow(inner + step * 11, y - 8, arrows[body], color, 20))
+            inner += step * 30
         if marks and a.get("fixation"):
-            out.append(_fix_mark(mx, y - 8, a["fixation"], color))
+            out.append(_fix_mark(inner + step * 4, y - 8, a["fixation"], color))
         out.append("</g>")
     return "".join(out)
 
@@ -318,6 +330,21 @@ def _wrap_svg(t: dict, session, parts: list[str], height: float, label: str,
             f'{session.defs()}{bg}{"".join(parts)}</svg>')
 
 
+
+
+
+def _figure(t: dict, cx: float, gy: float, on: bool) -> str:
+    """The standing figure. Drawn first so the columns sit on top of it."""
+    if not on:
+        return ""
+    return (f'<path d="{geo.FIGURE}" fill="{t["figure"]}" '
+            f'transform="translate({_f(cx)} {_f(gy)})"/>')
+
+
+def _graph(t: dict, cx: float, gy: float, figure: bool, body: str) -> str:
+    return f'<g transform="translate({_f(cx)} {_f(gy)})">{body}</g>'
+
+
 def _when(iso: str) -> str:
     return iso[:16].replace("T", " ") + " UTC"
 
@@ -334,7 +361,7 @@ def _theme(theme: str) -> dict:
 def render_svg(chart: dict, *, name: str | None = None, subtitle: str | None = None,
                theme: str = "light", layout: str = "full",
                center_colors: str = "traditional", disclaimer: bool = True,
-               background: bool = True) -> str:
+               background: bool = True, figure: bool = True) -> str:
     """Render a natal chart. ``layout`` is 'full' (header, graph, summary) or 'graph'."""
     t = _theme(theme)
     if layout not in ("full", "graph"):
@@ -356,6 +383,7 @@ def render_svg(chart: dict, *, name: str | None = None, subtitle: str | None = N
         else:
             y = 16.0
         gy = y + 14
+        parts.append(_figure(t, cx, gy, figure))
         head_y = gy + 28
         parts.append(ts.text(COL_L - 9, head_y, "Design", 19, font="semibold", fill=t["design"]))
         parts.append(ts.text(COL_R + 9, head_y, "Personality", 19, font="semibold",
@@ -366,9 +394,13 @@ def render_svg(chart: dict, *, name: str | None = None, subtitle: str | None = N
                              fill=t["muted"], anchor="end", tabular=True))
         col_y = gy + 140
         acts = chart["activations"]
-        parts.append(_column(acts["design"], t["design"], "Design", COL_L, col_y, PITCH, "left"))
+        parts.append(_column(acts["design"], t["design"], "Design", COL_L, col_y, PITCH, "left",
+                             arrows={"sun": v["determination"]["orientation"],
+                                     "north_node": v["environment"]["orientation"]}))
         parts.append(_column(acts["personality"], t["personality"], "Personality", COL_R,
-                             col_y, PITCH, "right"))
+                             col_y, PITCH, "right",
+                             arrows={"sun": v["motivation"]["orientation"],
+                                     "north_node": v["perspective"]["orientation"]}))
         if any(a.get("fixation") for imp in acts.values() for a in imp.values()):
             ly = col_y + 12 * PITCH + 46
             parts.append(_fix_mark(COL_L - 4, ly - 5, "exalted", t["muted"]))
@@ -380,18 +412,9 @@ def render_svg(chart: dict, *, name: str | None = None, subtitle: str | None = N
                 parts.append(_fix_mark(COL_L + 148, ly - 5, "juxtaposed", t["muted"]))
                 parts.append(ts.text(COL_L + 159, ly, "both", 13, fill=t["muted"]))
 
-        ay = gy + 44
-        for key, dx, dy, col in (("determination", -118, 0, t["design"]),
-                                 ("environment", -118, 30, t["design"]),
-                                 ("motivation", 118, 0, t["personality"]),
-                                 ("perspective", 118, 30, t["personality"])):
-            parts.append(f'<g><title>{key.title()}: {v[key]["name"]}, {v[key]["orientation"]}'
-                         f"</title>" + _arrow(cx + dx, ay + dy, v[key]["orientation"], col)
-                         + "</g>")
-
         colors, defined, states, notes = _natal_layers(chart, t)
-        parts.append(f'<g transform="translate({_f(cx)} {_f(gy)})">'
-                     + bodygraph_group(t, colors, defined, states, center_colors, notes) + "</g>")
+        parts.append(_graph(t, cx, gy, figure,
+                            bodygraph_group(t, colors, defined, states, center_colors, notes)))
         y = gy + geo.HEIGHT
 
         if layout == "full":
@@ -478,7 +501,7 @@ def _channel_list(t: dict, channels: list[dict], y: float, empty: str,
 def render_composite_svg(a: dict, b: dict, comp: dict, *, name_a: str = "Person A",
                          name_b: str = "Person B", theme: str = "light",
                          center_colors: str = "traditional", disclaimer: bool = True,
-                         background: bool = True) -> str:
+                         background: bool = True, figure: bool = True) -> str:
     t = _theme(theme)
     ca, cb = t["person_a"], t["person_b"]
     with ts.Session() as session:
@@ -490,6 +513,7 @@ def render_composite_svg(a: dict, b: dict, comp: dict, *, name_a: str = "Person 
             comp["definition"])
         parts.append(head)
         gy = y + 14
+        parts.append(_figure(t, W / 2, gy, figure))
         for chart, col, nm, x, anchor, align in ((a, ca, name_a, COL_L, "start", "left"),
                                                  (b, cb, name_b, COL_R, "end", "right")):
             edge = x - 9 if align == "left" else x + 9
@@ -510,8 +534,8 @@ def render_composite_svg(a: dict, b: dict, comp: dict, *, name_a: str = "Person 
         states = {c: ("defined" if c in comp["defined_centers"] else
                       "undefined" if any(g in colors for g in D.CENTER_GATES[c]) else "open")
                   for c in D.CENTERS}
-        parts.append(f'<g transform="translate({_f(W / 2)} {_f(gy)})">'
-                     + bodygraph_group(t, colors, defined, states, center_colors, notes) + "</g>")
+        parts.append(_graph(t, W / 2, gy, figure,
+                            bodygraph_group(t, colors, defined, states, center_colors, notes)))
         y = gy + geo.HEIGHT + 34
         parts.append(_rule(y, t))
         y += 42
@@ -538,7 +562,8 @@ def render_composite_svg(a: dict, b: dict, comp: dict, *, name_a: str = "Person 
 # --------------------------------------------------------------------------
 def render_transit_svg(natal: dict, transit: dict, overlay: dict, *, name: str | None = None,
                        theme: str = "light", center_colors: str = "traditional",
-                       disclaimer: bool = True, background: bool = True) -> str:
+                       disclaimer: bool = True, background: bool = True,
+                       figure: bool = True) -> str:
     t = _theme(theme)
     tc = t["transit"]
     with ts.Session() as session:
@@ -550,6 +575,7 @@ def render_transit_svg(natal: dict, transit: dict, overlay: dict, *, name: str |
             f'{len(overlay["completed_channels"])} channels completed by transit')
         parts.append(head)
         gy = y + 14
+        parts.append(_figure(t, W / 2, gy, figure))
         parts.append(ts.text(COL_L - 9, gy + 28, "Transit", 19, font="semibold", fill=tc))
         parts.append(ts.text(COL_L - 9, gy + 49, _when(transit["utc"]), 13, fill=t["muted"],
                              tabular=True))
@@ -575,8 +601,8 @@ def render_transit_svg(natal: dict, transit: dict, overlay: dict, *, name: str |
         for c in D.CENTERS:
             if states[c] == "open" and any(g in colors for g in D.CENTER_GATES[c]):
                 states[c] = "undefined"
-        parts.append(f'<g transform="translate({_f(W / 2)} {_f(gy)})">'
-                     + bodygraph_group(t, colors, defined, states, center_colors, notes) + "</g>")
+        parts.append(_graph(t, W / 2, gy, figure,
+                            bodygraph_group(t, colors, defined, states, center_colors, notes)))
         y = gy + geo.HEIGHT + 34
         parts.append(_rule(y, t))
         y += 42
